@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - SB Financial</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+  <script src="https://kit.fontawesome.com/53ad980c15.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">SB Financial</a>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero hero-inner" id="vanta-bg">
+    <div class="hero-content" data-aos="fade-up">
+      <i class="fas fa-envelope fa-2x" style="margin-bottom: 0.5rem;"></i>
+      <h1>Let’s Talk Finance</h1>
+      <p>Drop your query — I’ll get back ASAP.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+
+<section class="features contact-section" data-aos="fade-up">
+  <div class="container contact-container">
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-info" data-aos="fade-right">
+        <h3><i class="fas fa-envelope"></i>  Email</h3>
+        <p><a href="mailto:sbfinancial03@gmail.com">sbfinancial03@gmail.com</a></p>
+        <h3><i class="fas fa-phone"></i>  Phone</h3>
+        <p><a href="tel:+919044796693">+91 90447 96693</a></p>
+        <h3><i class="fas fa-hashtag"></i> Social</h3>
+  <div class="social-icons">
+  <a href="https://www.instagram.com/awe___som/" class="social-icon instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/in/itssommishra/" class="social-icon linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  <a href="https://twitter.com/Som_Mishra_" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a href="https://www.facebook.com/your-facebook-username" class="social-icon facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://wa.me/919044796693" class="social-icon whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+      </div>
+      <div class="contact-form" data-aos="fade-left">
+        <form name="submit-to-google-sheet">
+          <input type="text" name="Name" placeholder="Your Name" required>
+          <input type="email" name="Email" placeholder="Your Email" required>
+          <textarea name="Message" placeholder="Your Message" rows="6"></textarea>
+          <button type="submit" class="btn">Send Message</button>
+          <span id="msg"></span>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p>&copy; 2025 SB Financial. Made with ❤️ by Shashwat Bajpai.</p>
+    </div>
+  </footer>
+
+  <!-- AOS + Google Sheet Form -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwEhzWuuHaiInoH6E2NXTUzvqYo4zqMzm0BI1pJ_ghIMpU5Q1By7o-XrgTtNQlbtcayDw/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const msg = document.getElementById("msg");
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          msg.innerHTML = "Message sent successfully!";
+          setTimeout(() => msg.innerHTML = "", 4000);
+          form.reset();
+        })
+        .catch(error => {
+          msg.innerHTML = "Something went wrong. Try again!";
+        });
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+VANTA.FOG({
+  el: "#vanta-bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  highlightColor: 0xffffff,
+  midtoneColor: 0x305f72,
+  lowlightColor: 0x101820,
+  baseColor: 0x000000,
+  blurFactor: 0.6,
+  speed: 2.00,
+  zoom: 0.8
+});
+</script>
+</body>
+</html>

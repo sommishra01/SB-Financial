@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - SB Financial</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">SB Financial</a>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- About Hero -->
+<section class="hero hero-inner" id="vanta-bg">
+  <div class="hero-content" data-aos="fade-down">
+    <h1>About Me</h1>
+    <p>Who I am. What I believe. How I help.</p>
+  </div>
+</section>
+
+<!-- About Content -->
+<section class="about-section">
+  <div class="container about-container">
+    <div class="profile" data-aos="fade-right">
+      <img src="images/profile.jpeg" alt="Shashwat Bajpai - AMFI Registered Mutual Fund Distributor" />
+    </div>
+    <div class="about-text" data-aos="fade-left">
+      <h2>Hi, I'm Shashwat Bajpai</h2>
+      <p>
+        I'm an <strong>MBA in Finance</strong> and an <strong>AMFI-Registered Mutual Fund Distributor</strong>. At SB Financial, I simplify money decisions for individuals and families.
+        <br><br>
+        I believe financial freedom isn't a dream — it’s a decision. I offer personalized strategies using SIPs, goal-based planning, and efficient portfolio structuring to turn your money into a meaningful future.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline Section -->
+<section class="timeline" data-aos="fade-up">
+  <div class="container">
+    <h2 class="section-title">My Journey</h2>
+    <div class="timeline-items">
+      <div class="timeline-item">
+        <h3>Skills</h3>
+        <ul>
+          <li>✔ Financial Planning</li>
+          <li>✔ Portfolio Review</li>
+          <li>✔ Goal-Based Investing</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Education</h3>
+        <p>MBA (Finance), Certified Mutual Fund Advisor (AMFI)</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Experience</h3>
+        <p>2020–Present: Helped 100+ clients reach wealth milestones through smart financial strategies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-container">
+    <p>&copy; 2025 SB Financial. Made with ❤️ by Shashwat Bajpai.</p>
+  </div>
+</footer>
+
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>AOS.init({ duration: 1000, once: true });</script>
+<script src="script.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("vanta-bg")) {
+      VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x305f72,
+        backgroundColor: 0x101820
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

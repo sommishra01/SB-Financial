@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog - SB Financial</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">SB Financial</a>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero hero-inner" id="vanta-bg">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>SB Financial Blog</h1>
+      <p>Insights, tips, and updates from the world of finance</p>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="features" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="feature-cards">
+        <div class="feature-card" data-aos="fade-right">
+          <h3>How SIPs Make You Wealthy</h3>
+          <p>A beginner-friendly breakdown of Systematic Investment Plans and why they’re a smart long-term move.</p>
+          <a href="#" class="btn" style="margin-top: 1rem;">Read More</a>
+        </div>
+        <div class="feature-card" data-aos="fade-up">
+          <h3>5 Mistakes to Avoid While Investing</h3>
+          <p>Learn what not to do when growing your wealth — straight from a financial expert.</p>
+          <a href="#" class="btn" style="margin-top: 1rem;">Read More</a>
+        </div>
+        <div class="feature-card" data-aos="fade-left">
+          <h3>How to Start Your Portfolio in 2025</h3>
+          <p>Starting fresh? Here’s a step-by-step guide to launching your investment portfolio this year.</p>
+          <a href="#" class="btn" style="margin-top: 1rem;">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" data-aos="fade-in">
+    <div class="container">
+      <h2>Want Personalized Insights?</h2>
+      <p>Reach out for a one-on-one financial planning session with Shashwat Bajpai.</p>
+      <a href="contact.html" class="btn">Let’s Connect</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p>&copy; 2025 SB Financial. Made with ❤️ by Shashwat Bajpai.</p>
+    </div>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
+  <script src="script.js"></script>
+
+  <script>
+VANTA.NET({
+  el: "#vanta-bg",
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x305f72,
+  backgroundColor: 0x101820
+});
+</script>
+</body>
+</html>
