@@ -584,3 +584,29 @@ a {
     display: flex;
   }
 }
+@media (max-width: 768px) {
+  .hero-video {
+    height: 80vh;
+  }
+
+  .hero-video .hero-content {
+    padding: 0 1.5rem;
+    font-size: 0.9rem;
+    top: 45%;
+  }
+
+  .hero-video .hero-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-video .hero-content p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
