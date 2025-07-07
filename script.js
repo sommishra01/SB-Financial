@@ -26,6 +26,11 @@ if (menuToggle && navLinks) {
     navLinks.classList.toggle("open");
   });
 }
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+  });
+});
 
 // AOS Initialization
 AOS.init({
