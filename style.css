@@ -5,6 +5,10 @@ body {
   color: #1a1a1a;
   scroll-behavior: smooth;
 }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 a {
   text-decoration: none;
