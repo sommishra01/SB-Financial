@@ -584,15 +584,23 @@ a {
   }
 }
 @media (max-width: 768px) {
-  .hero-video {
-    height: 80vh;
-  }
+.hero-video {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
 
   .hero-video .hero-content {
-    padding: 0 1.5rem;
-    font-size: 0.9rem;
-    top: 45%;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  padding: 0 1.2rem;
+  text-align: center;
+  width: 100%;
+  max-width: 90vw;
+}
 
   .hero-video .hero-content h1 {
     font-size: 1.8rem;
@@ -601,7 +609,7 @@ a {
 
   .hero-video .hero-content p {
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   .btn {
