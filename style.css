@@ -501,6 +501,9 @@ a {
    Responsive
 ========================= */
 @media (max-width: 768px) {
+   .menu-toggle {
+    display: block;
+  }
   .nav-links {
     position: absolute;
     top: 60px;
