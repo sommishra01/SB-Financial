@@ -526,10 +526,9 @@ a {
   }
   .hero-content h1 {
     font-size: 2rem;
-   text-align: center;
   }
   .hero-video {
-    height: 80vh;
+    height: 50%;
   }
   .hero-video .hero-content {
     padding: 0 1.5rem;
@@ -543,8 +542,8 @@ a {
   }
   .hero-video .hero-content p {
     font-size: 1rem;
-    line-height: 1.4;
-      text-align: center;
+    line-height: 1.2;
+   text-align: center;
   }
   .btn {
     padding: 0.6rem 1.2rem;
