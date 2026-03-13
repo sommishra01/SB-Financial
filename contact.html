@@ -82,11 +82,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init({ duration: 1000, once: true });</script>
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwEhzWuuHaiInoH6E2NXTUzvqYo4zqMzm0BI1pJ_ghIMpU5Q1By7o-XrgTtNQlbtcayDw/exec';
+   
     const form = document.forms['submit-to-google-sheet'];
     const msg = document.getElementById("msg");
     const phoneField = document.querySelector("#fullphone");
-
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwEhzWuuHaiInoH6E2NXTUzvqYo4zqMzm0BI1pJ_ghIMpU5Q1By7o-XrgTtNQlbtcayDw/exec';
     form.addEventListener('submit', e => {
       e.preventDefault();
       phoneField.value = phoneInput.getNumber();
@@ -123,7 +123,7 @@ VANTA.FOG({
 
 <script>
 const phoneInput = window.intlTelInput(document.querySelector("#phone"), {
-  initialCountry: "auto",
+  initialCountry: "in",
   separateDialCode: true,
   preferredCountries: ["in","us","gb"],
   utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
