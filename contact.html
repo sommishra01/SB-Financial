@@ -116,14 +116,18 @@ VANTA.FOG({
   zoom: 0.8
 });
 </script>
-  <script>
-const phoneInputField = document.querySelector("#phone");
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 
-const phoneInput = window.intlTelInput(phoneInputField, {
-  initialCountry: "in",
-  separateDialCode: true,
-  preferredCountries: ["in","us","gb"],
-  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const phoneInputField = document.querySelector("#phone");
+
+  window.intlTelInput(phoneInputField, {
+    initialCountry: "in",
+    separateDialCode: true,
+    preferredCountries: ["in", "us", "gb"],
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+  });
 });
 </script>
 </body>
