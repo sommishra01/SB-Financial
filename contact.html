@@ -62,6 +62,7 @@
           <input type="text" name="Name" placeholder="Your Name" required>
           <input type="email" name="Email" placeholder="Your Email" required>
           <input id="phone" type="tel" name="Mobile" placeholder="Enter phone number" required>
+          <input type="hidden" name="FullPhone" id="fullphone">
           <textarea name="Message" placeholder="Your Message" rows="6"></textarea>
           <button type="submit" class="btn">Send Message</button>
           <span id="msg"></span>
@@ -84,8 +85,10 @@
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwEhzWuuHaiInoH6E2NXTUzvqYo4zqMzm0BI1pJ_ghIMpU5Q1By7o-XrgTtNQlbtcayDw/exec';
     const form = document.forms['submit-to-google-sheet'];
     const msg = document.getElementById("msg");
+    const phoneField = document.querySelector("#fullPhone");
 
     form.addEventListener('submit', e => {
+      phoneField.value = phoneInput.getNumber();
       e.preventDefault();
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
@@ -119,15 +122,11 @@ VANTA.FOG({
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const phoneInputField = document.querySelector("#phone");
-
-  window.intlTelInput(phoneInputField, {
-    initialCountry: "in",
-    separateDialCode: true,
-    preferredCountries: ["in", "us", "gb"],
-    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
-  });
+const phoneInput = window.intlTelInput(document.querySelector("#phone"), {
+  initialCountry: "in",
+  separateDialCode: true,
+  preferredCountries: ["in","us","gb"],
+  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
 });
 </script>
 </body>
