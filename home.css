@@ -50,6 +50,7 @@
 .features{
   padding:4rem 2rem;
   background:#fff;
+  border: 5px solid red;
 }
 
 .feature-cards{
@@ -200,9 +201,7 @@
   border-radius:50%;
   color:#fff;
 }
-.features {
-border: 5px solid red;
-}
+
 .instagram{background:#E4405F;}
 .linkedin{background:#0077B5;}
 .twitter{background:#000;}
