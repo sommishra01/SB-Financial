@@ -62,7 +62,6 @@ a {
   font-size: 1.8rem;
   cursor: pointer;
   color: #305f72;
-  z-index: 10000;
 }
 .nav-links {
   list-style: none;
@@ -498,6 +497,7 @@ a {
 @media (max-width: 768px) {
    .menu-toggle {
     display: block;
+     z-index: 10000;
   }
   .nav-links {
     position: absolute;
@@ -589,8 +589,10 @@ a {
   font-size:1.2rem;
 }
 
-
-
+#vanta-bg{
+  position: relative;
+  z-index: 0;
+}
 
 
 
