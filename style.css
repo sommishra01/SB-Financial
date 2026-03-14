@@ -38,12 +38,18 @@ a {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 9999;
 }
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.hero-about,
+.hero-inner,
+.contact-section{
+  position: relative;
+  z-index: 1;
 }
 .logo {
   font-weight: 700;
@@ -494,6 +500,7 @@ a {
   }
   .nav-links {
     position: absolute;
+    z-index: 9999;
     top: 60px;
     right: 0;
     background-color: #fff;
