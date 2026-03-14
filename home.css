@@ -36,8 +36,9 @@
   text-align:center;
   color:#fff;
   width:90%;
-  max-width:800px;
+  max-width:650px;   /* reduce width */
   z-index:3;
+  padding:0 20px;
 }
 
 .hero-main-content h1{
