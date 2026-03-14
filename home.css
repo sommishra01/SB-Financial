@@ -36,6 +36,8 @@
   transform:translate(-50%,-50%);
   text-align:center;
   color:#fff;
+   width:90%;
+  max-width:800px;
 }
 
 .hero-content h1{
