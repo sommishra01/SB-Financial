@@ -1,4 +1,10 @@
-   Base & Layout
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+Base & Layout
 ========================= */
 body {
   margin: 0;
