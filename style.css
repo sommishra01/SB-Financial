@@ -14,7 +14,6 @@ body {
   background-color: #f9fafa;
   color: #1a1a1a;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 html, body {
   max-width: 100%;
@@ -122,13 +121,16 @@ a {
   background: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
+
 .hero-video .hero-content {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 3;
   text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
+  width: 90%;
+  max-width: 800px;
   padding: 0 1rem;
 }
 
