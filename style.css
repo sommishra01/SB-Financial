@@ -36,7 +36,7 @@ a {
   background-color: #fff;
   padding: 1rem 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 9999;
 }
@@ -62,6 +62,8 @@ a {
   font-size: 1.8rem;
   cursor: pointer;
   color: #305f72;
+  position: relative;
+  z-index: 10000;
 }
 .nav-links {
   list-style: none;
