@@ -40,38 +40,43 @@ AOS.init({
 
 //mutual fund logo js
 
-(function () {
+window.addEventListener('load', function () {
   var track = document.getElementById('logoTrack');
   if (!track) return;
-
+ 
   // Clone all logo items and append — creates seamless infinite loop
   var originals = Array.prototype.slice.call(track.querySelectorAll('.logo-item'));
   originals.forEach(function (item) {
     track.appendChild(item.cloneNode(true));
   });
-
+ 
   var pos = 0;
   var speed = 0.4; // px per frame — raise to scroll faster, lower to scroll slower
   var paused = false;
-  var halfWidth = track.scrollWidth / 2;
-
+  var halfWidth = 0;
+ 
+  // Small delay to ensure layout is painted before measuring
+  setTimeout(function () {
+    halfWidth = track.scrollWidth / 2;
+  }, 100);
+ 
   // Recalculate on resize
   window.addEventListener('resize', function () {
     halfWidth = track.scrollWidth / 2;
   });
-
+ 
   // Pause on hover, resume on mouse leave
   track.addEventListener('mouseenter', function () { paused = true; });
   track.addEventListener('mouseleave', function () { paused = false; });
-
+ 
   function tick() {
-    if (!paused) {
+    if (!paused && halfWidth > 0) {
       pos += speed;
-      if (pos >= halfWidth) pos = 0; // seamless jump back
+      if (pos >= halfWidth) pos = 0;
       track.style.transform = 'translateX(-' + pos + 'px)';
     }
     requestAnimationFrame(tick);
   }
-
+ 
   tick();
-})();
+});
