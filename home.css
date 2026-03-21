@@ -223,8 +223,8 @@
 .partners {
   background: #fff;
   padding: 2.5rem 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
   overflow: hidden;
 }
 
@@ -241,7 +241,6 @@
 .logo-track-wrap {
   overflow: hidden;
   position: relative;
-  /* Fade edges for a seamless look */
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
@@ -251,11 +250,7 @@
   align-items: center;
   gap: 3rem;
   width: max-content;
-  animation: partners-scroll 35s linear infinite;
-}
-
-.logo-track:hover {
-  animation-play-state: paused;
+  will-change: transform;
 }
 
 .logo-item {
@@ -275,23 +270,60 @@
   filter: grayscale(0%);
 }
 
-@keyframes partners-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+.logo-item svg {
+  height: 38px;
+  width: auto;
 }
 
-/* Respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .logo-track {
-    animation: none;
+/* =========================
+   Tablet (max 768px)
+========================= */
+@media (max-width: 768px) {
+  .partners {
+    padding: 2rem 1.5rem;
   }
-}
 
-/* On very small screens, slow it down slightly */
-@media (max-width: 480px) {
+  .partners-label {
+    font-size: 0.68rem;
+    margin-bottom: 1.4rem;
+  }
+
   .logo-track {
     gap: 2rem;
-    animation-duration: 25s;
+  }
+
+  .logo-item {
+    height: 40px;
+  }
+
+  .logo-item svg {
+    height: 30px;
   }
 }
 
+/* =========================
+   Mobile (max 480px)
+========================= */
+@media (max-width: 480px) {
+  .partners {
+    padding: 1.5rem 1rem;
+  }
+
+  .partners-label {
+    font-size: 0.65rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .logo-track {
+    gap: 1.5rem;
+  }
+
+  .logo-item {
+    height: 34px;
+  }
+
+  .logo-item svg {
+    height: 26px;
+  }
+}
