@@ -214,3 +214,84 @@
 .twitter{background:#000;}
 .facebook{background:#1877F2;}
 .whatsapp{background:#25D366;}
+
+/* =========================
+   Partners / AMC Logo Bar
+   Paste anywhere in home.css
+========================= */
+
+.partners {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.partners-label {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1.8rem;
+}
+
+.logo-track-wrap {
+  overflow: hidden;
+  position: relative;
+  /* Fade edges for a seamless look */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: partners-scroll 35s linear infinite;
+}
+
+.logo-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 48px;
+  opacity: 0.55;
+  filter: grayscale(100%);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  cursor: default;
+}
+
+.logo-item:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+@keyframes partners-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .logo-track {
+    animation: none;
+  }
+}
+
+/* On very small screens, slow it down slightly */
+@media (max-width: 480px) {
+  .logo-track {
+    gap: 2rem;
+    animation-duration: 25s;
+  }
+}
+
