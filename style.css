@@ -526,7 +526,7 @@ a {
     font-size: 2rem;
   }
   .hero-video {
-    height: 50%;
+    height: 50vh;
   }
   .hero-video .hero-content {
     padding: 0 1.5rem;
