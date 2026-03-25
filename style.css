@@ -515,6 +515,7 @@ a {
   }
   .nav-links.open {
     display: flex;
+    padding: 1.25rem;
   }
   .feature-cards,
   .testimonial-cards,
