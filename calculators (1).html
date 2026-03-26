@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculators – SB Finances</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Page Styles -->
+  <link rel="stylesheet" href="calculators.css"/>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">SB Finances</a>
+      <span class="menu-toggle" id="menuToggle">&#9776;</span>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="calculators.html" class="active-nav">Calculators</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html" class="btn">Book Consultation</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero-inner" id="vanta-bg">
+    <div class="hero-content">
+      <h1>Financial Calculators</h1>
+      <p>Plan your SIP, retirement, and financial goals with our easy-to-use calculators.</p>
+    </div>
+  </section>
+
+  <!-- ── TABS ── -->
+  <section class="calc-tabs-section">
+    <div class="container">
+      <div class="calc-tabs">
+        <button class="calc-tab-btn active" data-tab="sip">
+          <span class="calc-tab-icon">📈</span> SIP Calculator
+        </button>
+        <button class="calc-tab-btn" data-tab="retirement">
+          <span class="calc-tab-icon">🏠</span> Retirement Calculator
+        </button>
+        <button class="calc-tab-btn" data-tab="goal">
+          <span class="calc-tab-icon">🎯</span> Goal Planning
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PANELS ── -->
+  <section class="calc-section">
+    <div class="container">
+
+      <!-- SIP PANEL -->
+      <div class="calc-panel active" id="panel-sip">
+        <div class="calc-grid">
+
+          <!-- Inputs -->
+          <div class="calc-inputs feature-card">
+            <h3>SIP Calculator</h3>
+            <p class="calc-desc">Estimate your Systematic Investment Plan returns over time.</p>
+
+            <div class="calc-field">
+              <label>Monthly Investment (₹) <span id="sip-amt-val">₹5,000</span></label>
+              <input type="range" id="sip-amt" min="500" max="100000" step="500" value="5000"/>
+            </div>
+            <div class="calc-field">
+              <label>Expected Annual Return (%) <span id="sip-rate-val">12%</span></label>
+              <input type="range" id="sip-rate" min="1" max="30" step="0.5" value="12"/>
+            </div>
+            <div class="calc-field">
+              <label>Investment Duration (Years) <span id="sip-yrs-val">10 yrs</span></label>
+              <input type="range" id="sip-yrs" min="1" max="40" step="1" value="10"/>
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div class="calc-results">
+            <div class="results-header">
+              <h3>Your SIP Projection</h3>
+            </div>
+
+            <div class="result-rows">
+              <div class="result-row">
+                <span class="result-label">Monthly Investment</span>
+                <span class="result-value" id="sip-r-monthly">₹5,000</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Total Invested</span>
+                <span class="result-value" id="sip-r-invested">₹6,00,000</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Estimated Returns</span>
+                <span class="result-value" id="sip-r-returns">₹5,23,358</span>
+              </div>
+              <div class="result-row highlight-row">
+                <span class="result-label">Total Corpus</span>
+                <span class="result-value result-highlight" id="sip-r-corpus">₹11,23,358</span>
+              </div>
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="donut-area">
+              <div class="donut-wrapper">
+                <svg class="donut-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="#e8edf0" stroke-width="13"/>
+                  <circle id="sip-arc-invested" cx="50" cy="50" r="38" fill="none" stroke="#305f72" stroke-width="13" stroke-dasharray="238.76" stroke-dashoffset="0"/>
+                  <circle id="sip-arc-returns"  cx="50" cy="50" r="38" fill="none" stroke="#f9c74f" stroke-width="13" stroke-dasharray="238.76" stroke-dashoffset="0"/>
+                </svg>
+                <div class="donut-label">
+                  <span class="donut-pct" id="sip-returns-pct">47%</span>
+                  <span class="donut-sub">returns</span>
+                </div>
+              </div>
+              <div class="donut-legend">
+                <div class="legend-item"><span class="legend-dot teal"></span> Invested</div>
+                <div class="legend-item"><span class="legend-dot yellow"></span> Returns</div>
+              </div>
+            </div>
+
+            <a href="book.html" class="btn calc-cta">Get Personalised SIP Plan →</a>
+          </div>
+
+        </div>
+      </div><!-- /panel-sip -->
+
+      <!-- RETIREMENT PANEL -->
+      <div class="calc-panel" id="panel-retirement">
+        <div class="calc-grid">
+
+          <div class="calc-inputs feature-card">
+            <h3>Retirement Calculator</h3>
+            <p class="calc-desc">Find how much corpus you need to retire comfortably.</p>
+
+            <div class="calc-field">
+              <label>Current Age <span id="ret-age-val">30 yrs</span></label>
+              <input type="range" id="ret-age" min="20" max="55" step="1" value="30"/>
+            </div>
+            <div class="calc-field">
+              <label>Retirement Age <span id="ret-retage-val">60 yrs</span></label>
+              <input type="range" id="ret-retage" min="45" max="70" step="1" value="60"/>
+            </div>
+            <div class="calc-field">
+              <label>Monthly Expenses Today (₹) <span id="ret-exp-val">₹50,000</span></label>
+              <input type="range" id="ret-exp" min="10000" max="500000" step="5000" value="50000"/>
+            </div>
+            <div class="calc-field">
+              <label>Expected Inflation (%) <span id="ret-inf-val">6%</span></label>
+              <input type="range" id="ret-inf" min="3" max="12" step="0.5" value="6"/>
+            </div>
+            <div class="calc-field">
+              <label>Expected Return on Investment (%) <span id="ret-roi-val">10%</span></label>
+              <input type="range" id="ret-roi" min="5" max="20" step="0.5" value="10"/>
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="results-header">
+              <h3>Your Retirement Plan</h3>
+            </div>
+
+            <div class="result-rows">
+              <div class="result-row">
+                <span class="result-label">Years to Retirement</span>
+                <span class="result-value" id="ret-r-yrs">30 years</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Monthly Expenses at Retirement</span>
+                <span class="result-value" id="ret-r-futexp">₹2,87,175</span>
+              </div>
+              <div class="result-row highlight-row">
+                <span class="result-label">Corpus Required</span>
+                <span class="result-value result-highlight" id="ret-r-corpus">₹3.44 Cr</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Monthly SIP Needed</span>
+                <span class="result-value" id="ret-r-sip">₹18,500/mo</span>
+              </div>
+            </div>
+
+            <!-- Age Timeline -->
+            <div class="age-timeline">
+              <div class="timeline-label">Retirement Timeline</div>
+              <div class="timeline-bar-wrap">
+                <div class="timeline-point">
+                  <span class="timeline-age" id="ret-r-curage">30</span>
+                  <span class="timeline-sub">Today</span>
+                </div>
+                <div class="timeline-track"><div class="timeline-fill"></div></div>
+                <div class="timeline-point">
+                  <span class="timeline-age teal" id="ret-r-retage">60</span>
+                  <span class="timeline-sub">Retire</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="book.html" class="btn calc-cta">Plan My Retirement →</a>
+          </div>
+
+        </div>
+      </div><!-- /panel-retirement -->
+
+      <!-- GOAL PANEL -->
+      <div class="calc-panel" id="panel-goal">
+        <div class="calc-grid">
+
+          <div class="calc-inputs feature-card">
+            <h3>Goal Planning Calculator</h3>
+            <p class="calc-desc">Dream home, child's education, world tour — find your monthly investment target.</p>
+
+            <div class="calc-field">
+              <label>Goal Amount (₹) <span id="goal-amt-val">₹25,00,000</span></label>
+              <input type="range" id="goal-amt" min="100000" max="10000000" step="100000" value="2500000"/>
+            </div>
+            <div class="calc-field">
+              <label>Time to Achieve (Years) <span id="goal-yrs-val">10 yrs</span></label>
+              <input type="range" id="goal-yrs" min="1" max="30" step="1" value="10"/>
+            </div>
+            <div class="calc-field">
+              <label>Expected Annual Return (%) <span id="goal-rate-val">12%</span></label>
+              <input type="range" id="goal-rate" min="5" max="25" step="0.5" value="12"/>
+            </div>
+            <div class="calc-field">
+              <label>Amount Already Saved (₹) <span id="goal-saved-val">₹0</span></label>
+              <input type="range" id="goal-saved" min="0" max="5000000" step="50000" value="0"/>
+            </div>
+
+            <!-- Presets -->
+            <div class="goal-presets">
+              <span class="presets-label">Quick Presets:</span>
+              <div class="preset-btns">
+                <button class="preset-btn" data-amt="500000"  data-yrs="5">📚 Education</button>
+                <button class="preset-btn" data-amt="5000000" data-yrs="15">🏠 Home</button>
+                <button class="preset-btn" data-amt="1000000" data-yrs="3">💍 Wedding</button>
+                <button class="preset-btn" data-amt="300000"  data-yrs="2">✈️ Travel</button>
+                <button class="preset-btn" data-amt="200000"  data-yrs="1">🛡️ Emergency</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="results-header">
+              <h3>Your Goal Projection</h3>
+            </div>
+
+            <div class="result-rows">
+              <div class="result-row">
+                <span class="result-label">Target Goal Amount</span>
+                <span class="result-value" id="goal-r-target">₹25,00,000</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Future Value of Savings</span>
+                <span class="result-value" id="goal-r-saved">₹0</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Remaining Target</span>
+                <span class="result-value" id="goal-r-remaining">₹25,00,000</span>
+              </div>
+              <div class="result-row highlight-row">
+                <span class="result-label">Monthly SIP Required</span>
+                <span class="result-value result-highlight" id="goal-r-sip">₹11,122/mo</span>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="goal-progress-wrap">
+              <div class="goal-progress-label">
+                <span>Savings Coverage</span>
+                <span id="goal-coverage-pct">0%</span>
+              </div>
+              <div class="goal-progress-track">
+                <div class="goal-progress-fill" id="goal-progress-fill"></div>
+              </div>
+            </div>
+
+            <a href="book.html" class="btn calc-cta">Build My Goal Plan →</a>
+          </div>
+
+        </div>
+      </div><!-- /panel-goal -->
+
+    </div>
+  </section>
+
+  <!-- ── DISCLAIMER STRIP ── -->
+  <section class="disclaimer-strip">
+    <div class="container">
+      <div class="disclaimer-grid">
+        <div class="disclaimer-item">
+          <h4>📌 Disclaimer</h4>
+          <p>These calculators provide estimates based on assumed returns. Actual mutual fund returns may vary. Past performance is not indicative of future results.</p>
+        </div>
+        <div class="disclaimer-item">
+          <h4>📋 AMFI Registered</h4>
+          <p>SB Finances is an AMFI registered mutual fund distributor. All investment advice is regulated and transparent.</p>
+        </div>
+        <div class="disclaimer-item">
+          <h4>💬 Need Help?</h4>
+          <p>Our advisors are ready to help you build a personalised investment plan. Book a free 15-minute consultation today.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p>© 2025 SB Finances. All rights reserved. | AMFI Registered Advisor</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
+  <script src="calculators.js"></script>
+
+</body>
+</html>

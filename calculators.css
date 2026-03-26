@@ -1,0 +1,542 @@
+/*
+ * calculators.css
+ * Page-specific styles for the Calculators page.
+ * Inherits base styles, typography, navbar, hero, btn, footer from style.css
+ * Color palette sourced from style.css:
+ *   Primary Teal  : #305f72
+ *   Dark Teal     : #214655
+ *   Deep Dark     : #183153 / #101820
+ *   Yellow Accent : #f9c74f / #f4b544
+ *   Background    : #f9fafa
+ *   Card BG       : #f0f3f4
+ *   Text          : #1a1a1a / #333
+ *   Muted         : #777
+ */
+
+/* ============================================================
+   ACTIVE NAV LINK
+   ============================================================ */
+.active-nav {
+  color: #305f72 !important;
+  font-weight: 600;
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+.calc-tabs-section {
+  background: #fff;
+  padding: 2rem 0 0;
+  border-bottom: 2px solid #e8edf0;
+}
+
+.calc-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.calc-tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 0.85rem 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  margin-bottom: -2px; /* sit on border */
+}
+
+.calc-tab-btn:hover {
+  color: #305f72;
+}
+
+.calc-tab-btn.active {
+  color: #305f72;
+  border-bottom-color: #305f72;
+  font-weight: 600;
+}
+
+.calc-tab-icon {
+  font-size: 1rem;
+}
+
+/* ============================================================
+   CALC SECTION WRAPPER
+   ============================================================ */
+.calc-section {
+  padding: 3rem 0 4rem;
+  background: #f9fafa;
+}
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+.calc-panel {
+  display: none;
+}
+
+.calc-panel.active {
+  display: block;
+  animation: fadeUp 0.35s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   TWO-COLUMN GRID
+   ============================================================ */
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ============================================================
+   INPUT CARD  (extends .feature-card from style.css)
+   ============================================================ */
+.calc-inputs {
+  /* inherits background, border-radius, box-shadow, padding from .feature-card */
+  text-align: left;
+  max-width: 100%;
+}
+
+.calc-inputs h3 {
+  /* inherits color: #305f72 from .feature-card h3 */
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.calc-desc {
+  font-size: 0.88rem;
+  color: #777;
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+}
+
+/* ── Field ── */
+.calc-field {
+  margin-bottom: 1.6rem;
+}
+
+.calc-field label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 0.6rem;
+}
+
+.calc-field label span {
+  font-weight: 600;
+  color: #305f72;
+  font-size: 0.9rem;
+}
+
+/* ── Range Slider ── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    #305f72 0%,
+    #305f72 var(--pct, 40%),
+    #dde4e8 var(--pct, 40%),
+    #dde4e8 100%
+  );
+  transition: background 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #305f72;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(48, 95, 114, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #214655;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #305f72;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(48, 95, 114, 0.35);
+  cursor: pointer;
+}
+
+/* ── Goal Presets ── */
+.goal-presets {
+  margin-top: 1.6rem;
+}
+
+.presets-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.preset-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.preset-btn {
+  background: #f0f3f4;
+  border: 1px solid #dde4e8;
+  color: #305f72;
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.preset-btn:hover {
+  background: #305f72;
+  color: #fff;
+  border-color: #305f72;
+}
+
+/* ============================================================
+   RESULTS CARD
+   ============================================================ */
+.calc-results {
+  background: linear-gradient(145deg, #214655 0%, #305f72 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 30px rgba(33, 70, 85, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.results-header h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 1.2rem;
+}
+
+/* ── Result Rows ── */
+.result-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.result-label {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+}
+
+.result-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.highlight-row {
+  background: rgba(249, 199, 79, 0.1);
+  border-radius: 8px;
+  padding: 0.85rem 0.75rem;
+  margin: 0.4rem -0.75rem;
+}
+
+.result-highlight {
+  color: #f9c74f;
+  font-size: 1.2rem;
+}
+
+/* ── CTA Button ── */
+.calc-cta {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  /* inherits .btn: background #f9c74f, color #1a1a1a, border-radius 25px */
+}
+
+/* ============================================================
+   DONUT CHART
+   ============================================================ */
+.donut-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.4rem 0 0.8rem;
+}
+
+.donut-wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-svg {
+  width: 130px;
+  height: 130px;
+  transform: rotate(-90deg);
+}
+
+.donut-label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.donut-pct {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f9c74f;
+  line-height: 1;
+}
+
+.donut-sub {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+}
+
+.donut-legend {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.75rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.teal   { background: #fff; }
+.legend-dot.yellow { background: #f9c74f; }
+
+/* ============================================================
+   RETIREMENT TIMELINE
+   ============================================================ */
+.age-timeline {
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin-top: 1.4rem;
+}
+
+.timeline-label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.8rem;
+}
+
+.timeline-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.timeline-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.timeline-age {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f9c74f;
+  line-height: 1;
+}
+
+.timeline-age.teal {
+  color: #a8d5e2;
+}
+
+.timeline-sub {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.timeline-track {
+  flex: 1;
+  height: 5px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.timeline-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #f9c74f, #a8d5e2);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+/* ============================================================
+   GOAL PROGRESS BAR
+   ============================================================ */
+.goal-progress-wrap {
+  margin-top: 1.4rem;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+
+.goal-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.65rem;
+}
+
+.goal-progress-track {
+  height: 8px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.goal-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #f9c74f, #f4b544);
+  border-radius: 8px;
+  transition: width 0.6s ease;
+}
+
+/* ============================================================
+   DISCLAIMER STRIP
+   ============================================================ */
+.disclaimer-strip {
+  background: #fff;
+  border-top: 3px solid #305f72;
+  padding: 2.5rem 0;
+}
+
+.disclaimer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.disclaimer-item {
+  flex: 1 1 220px;
+}
+
+.disclaimer-item h4 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #305f72;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.disclaimer-item p {
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calc-tabs {
+    gap: 0;
+  }
+
+  .calc-tab-btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .calc-results {
+    padding: 1.5rem;
+  }
+
+  .disclaimer-grid {
+    flex-direction: column;
+  }
+
+  .preset-btns {
+    gap: 0.4rem;
+  }
+}
