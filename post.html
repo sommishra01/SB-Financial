@@ -53,18 +53,41 @@
     const postContainer = document.getElementById("post-content");
 
     if (!slug) {
-      postContainer.innerHTML = "<h1>Post not found</h1>";
+      postContainer.innerHTML = "<h1>Post not found</h1><p>No slug provided.</p>";
       return;
     }
 
     try {
+      // 1. Load summary/meta from JSON
       const res = await fetch("posts/posts.json");
       const posts = await res.json();
       const post = posts.find(p => p.slug === slug);
 
       if (!post) {
-        postContainer.innerHTML = "<h1>Post not found</h1>";
+        postContainer.innerHTML = "<h1>Post not found</h1><p>No matching post found.</p>";
         return;
+      }
+
+      // 2. Load markdown file
+      const mdRes = await fetch(`posts/${slug}.md`);
+      if (!mdRes.ok) {
+        postContainer.innerHTML = "<h1>Blog file not found</h1><p>Markdown file missing.</p>";
+        return;
+      }
+
+      const mdText = await mdRes.text();
+
+      // 3. Remove frontmatter safely
+      let content = mdText;
+      if (mdText.startsWith('---')) {
+        const parts = mdText.split('---');
+        if (parts.length >= 3) {
+          content = parts.slice(2).join('---').trim();
+        }
+      }
+
+      if (!content) {
+        content = "No blog content available.";
       }
 
       document.title = post.title + " - SB Financial";
@@ -78,10 +101,10 @@
 
         <h1 style="font-size:2.5rem; margin:1rem 0;">${post.title}</h1>
         <p style="color:#777; margin-bottom:0.5rem;">${new Date(post.date).toDateString()}</p>
-        <p style="color:#555; font-weight:500; margin-bottom:2rem;">By ${post.author}</p>
+        <p style="color:#555; font-weight:500; margin-bottom:2rem;">By ${post.author || "SB Financial"}</p>
 
         <div class="blog-post-body" style="line-height:1.9; font-size:1.05rem;">
-          ${post.content}
+          ${marked.parse(content)}
         </div>
       `;
     } catch (error) {
