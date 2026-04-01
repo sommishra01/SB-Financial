@@ -44,44 +44,59 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    async function loadPost() {
-      const params = new URLSearchParams(window.location.search);
-      const slug = params.get("slug");
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
+<script>
+  async function loadPost() {
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+    const postContainer = document.getElementById("post-content");
+
+    if (!slug) {
+      postContainer.innerHTML = "<h1>Post not found</h1>";
+      return;
+    }
+
+    try {
+      // 1. Load metadata from posts.json
       const res = await fetch("posts/posts.json");
       const posts = await res.json();
-
       const post = posts.find(p => p.slug === slug);
 
       if (!post) {
-        document.getElementById("post-content").innerHTML = "<h1>Post not found</h1>";
+        postContainer.innerHTML = "<h1>Post not found</h1>";
         return;
       }
 
+      // 2. Load actual markdown file
       const mdRes = await fetch(`posts/${slug}.md`);
       const mdText = await mdRes.text();
 
-      // remove frontmatter
+      // 3. Remove YAML frontmatter (--- ---)
       const content = mdText.replace(/^---[\s\S]*?---/, "").trim();
 
-      document.title = post.title + " - SB Financial";
-
-      document.getElementById("post-content").innerHTML = `
+      // 4. Render page
+      postContainer.innerHTML = `
         <img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:20px; margin-bottom:2rem; max-height:400px; object-fit:cover;">
+        
         <span style="display:inline-block; background:#e6f4f1; color:#305f72; padding:0.4rem 1rem; border-radius:30px; font-size:0.9rem; font-weight:600; margin-bottom:1rem;">
           ${post.category}
         </span>
-        <h1 style="font-size:2.5rem; margin-bottom:1rem;">${post.title}</h1>
+
+        <h1 style="font-size:2.5rem; margin:1rem 0;">${post.title}</h1>
         <p style="color:#777; margin-bottom:2rem;">${new Date(post.date).toDateString()}</p>
-        <div style="line-height:1.9; font-size:1.05rem;" class="blog-post-body">
+
+        <div class="blog-post-body" style="line-height:1.9; font-size:1.05rem;">
           ${marked.parse(content)}
         </div>
       `;
+    } catch (error) {
+      console.error("Error loading post:", error);
+      postContainer.innerHTML = "<h1>Error loading post</h1><p>Could not load the blog content.</p>";
     }
+  }
 
-    loadPost();
-  </script>
+  loadPost();
+</script>
 </body>
 </html>
