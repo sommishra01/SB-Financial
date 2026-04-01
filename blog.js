@@ -1,6 +1,8 @@
 async function loadBlogs() {
   const blogContainer = document.getElementById("blog-list");
 
+  if (!blogContainer) return;
+
   try {
     const res = await fetch("posts/posts.json");
     const posts = await res.json();
@@ -19,15 +21,15 @@ async function loadBlogs() {
             ${post.category}
           </span>
           <h3>${post.title}</h3>
-          <p>${post.description}</p>
+          <p>${post.excerpt}</p>
           <a href="post.html?slug=${post.slug}" class="btn" style="margin-top: 1rem;">Read More</a>
         </div>
       `)
       .join("");
 
   } catch (error) {
-    blogContainer.innerHTML = "<p>Failed to load blogs.</p>";
     console.error("Error loading blogs:", error);
+    blogContainer.innerHTML = "<p>Failed to load blogs.</p>";
   }
 }
 
