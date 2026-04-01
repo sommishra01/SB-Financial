@@ -58,7 +58,6 @@
     }
 
     try {
-      // 1. Load metadata from posts.json
       const res = await fetch("posts/posts.json");
       const posts = await res.json();
       const post = posts.find(p => p.slug === slug);
@@ -68,14 +67,8 @@
         return;
       }
 
-      // 2. Load actual markdown file
-      const mdRes = await fetch(`posts/${slug}.md`);
-      const mdText = await mdRes.text();
+      document.title = post.title + " - SB Financial";
 
-      // 3. Remove YAML frontmatter (--- ---)
-      const content = mdText.replace(/^---[\s\S]*?---/, "").trim();
-
-      // 4. Render page
       postContainer.innerHTML = `
         <img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:20px; margin-bottom:2rem; max-height:400px; object-fit:cover;">
         
@@ -84,10 +77,11 @@
         </span>
 
         <h1 style="font-size:2.5rem; margin:1rem 0;">${post.title}</h1>
-        <p style="color:#777; margin-bottom:2rem;">${new Date(post.date).toDateString()}</p>
+        <p style="color:#777; margin-bottom:0.5rem;">${new Date(post.date).toDateString()}</p>
+        <p style="color:#555; font-weight:500; margin-bottom:2rem;">By ${post.author}</p>
 
         <div class="blog-post-body" style="line-height:1.9; font-size:1.05rem;">
-          ${marked.parse(content)}
+          ${post.content}
         </div>
       `;
     } catch (error) {
