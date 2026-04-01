@@ -1,12 +1,12 @@
 [
- {
-  "title": "What is SIP? A Beginner’s Guide to Smart Investing",
-  "slug": "what-is-sip-a-beginner’s-guide-to-smart-investing",
-  "excerpt": "Learn what SIP is, how it works, its benefits, and why it is one of the smartest ways to build long-term wealth.",
-  "category": "Investment",
-  "author": "SB Financial",
-  "date": "2026-04-01",
-  "image": "images/sip-guide.jpg",
- }
+  {
+    "title": "What is SIP? A Beginner’s Guide to Smart Investing",
+    "slug": "what-is-sip-a-beginners-guide-to-smart-investing",
+    "excerpt": "Learn what SIP is, how it works, its benefits, and why it is one of the smartest ways to build long-term wealth.",
+    "category": "Investment",
+    "author": "SB Financial",
+    "date": "2026-04-01",
+    "image": "/assets/uploads/sip.jpg"
+  }
 
 ]
