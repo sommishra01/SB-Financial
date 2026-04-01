@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Post - SB Financial</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <script src="https://kit.fontawesome.com/53ad980c15.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">SB Financial</a>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="calculators.html">Calculators</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Blog Post -->
+  <section class="features" style="padding-top: 8rem;">
+    <div class="container" style="max-width: 900px;">
+      <div id="post-content">
+        <h1>Loading...</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p>&copy; 2025 SB Financial. Made with ❤️ by Shashwat Bajpai.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    async function loadPost() {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("slug");
+
+      const res = await fetch("posts/posts.json");
+      const posts = await res.json();
+
+      const post = posts.find(p => p.slug === slug);
+
+      if (!post) {
+        document.getElementById("post-content").innerHTML = "<h1>Post not found</h1>";
+        return;
+      }
+
+      const mdRes = await fetch(`posts/${slug}.md`);
+      const mdText = await mdRes.text();
+
+      // remove frontmatter
+      const content = mdText.replace(/^---[\s\S]*?---/, "").trim();
+
+      document.title = post.title + " - SB Financial";
+
+      document.getElementById("post-content").innerHTML = `
+        <img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:20px; margin-bottom:2rem; max-height:400px; object-fit:cover;">
+        <span style="display:inline-block; background:#e6f4f1; color:#305f72; padding:0.4rem 1rem; border-radius:30px; font-size:0.9rem; font-weight:600; margin-bottom:1rem;">
+          ${post.category}
+        </span>
+        <h1 style="font-size:2.5rem; margin-bottom:1rem;">${post.title}</h1>
+        <p style="color:#777; margin-bottom:2rem;">${new Date(post.date).toDateString()}</p>
+        <div style="line-height:1.9; font-size:1.05rem;" class="blog-post-body">
+          ${marked.parse(content)}
+        </div>
+      `;
+    }
+
+    loadPost();
+  </script>
+</body>
+</html>
