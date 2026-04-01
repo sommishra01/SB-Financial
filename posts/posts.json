@@ -1,0 +1,26 @@
+[
+  {
+    "title": "How SIPs Make You Wealthy",
+    "slug": "how-sips-make-you-wealthy",
+    "date": "2026-04-01",
+    "image": "assets/uploads/sip.jpg",
+    "description": "A beginner-friendly breakdown of Systematic Investment Plans and why they’re a smart long-term move.",
+    "category": "SIP"
+  },
+  {
+    "title": "5 Mistakes to Avoid While Investing",
+    "slug": "5-mistakes-to-avoid-while-investing",
+    "date": "2026-04-02",
+    "image": "assets/uploads/investing.jpg",
+    "description": "Learn what not to do when growing your wealth — straight from a financial expert.",
+    "category": "Financial Planning"
+  },
+  {
+    "title": "How to Start Your Portfolio in 2025",
+    "slug": "how-to-start-your-portfolio-in-2025",
+    "date": "2026-04-03",
+    "image": "assets/uploads/portfolio.jpg",
+    "description": "Starting fresh? Here’s a step-by-step guide to launching your investment portfolio this year.",
+    "category": "Stock Market"
+  }
+]
