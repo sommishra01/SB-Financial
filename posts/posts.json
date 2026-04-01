@@ -1,12 +1,14 @@
 [
-  {
-    "title": "How SIPs Make You Wealthy",
-    "slug": "how-sips-make-you-wealthy",
-    "date": "2026-04-01",
-    "image": "assets/uploads/sip.jpg",
-    "description": "A beginner-friendly breakdown of Systematic Investment Plans and why they’re a smart long-term move.",
-    "category": "SIP"
-  },
+ {
+  "title": "What is SIP? A Beginner’s Guide to Smart Investing",
+  "slug": "what-is-sip-beginners-guide",
+  "excerpt": "Learn what SIP is, how it works, its benefits, and why it is one of the smartest ways to build long-term wealth.",
+  "category": "Investment",
+  "author": "SB Financial",
+  "date": "2026-04-01",
+  "image": "images/sip-guide.jpg",
+  "content": "<h1>What is SIP? A Beginner’s Guide to Smart Investing</h1><p>If you’ve ever wanted to start investing but felt confused about where to begin, <strong>SIP</strong> might be one of the easiest and smartest ways to start.</p><p>A <strong>Systematic Investment Plan (SIP)</strong> allows you to invest a fixed amount regularly in mutual funds — usually every month.</p><h2>What Does SIP Mean?</h2><p><strong>SIP stands for Systematic Investment Plan.</strong></p><h2>How Does SIP Work?</h2><p>When you start a SIP, a fixed amount gets invested automatically into the mutual fund of your choice on a selected date.</p><h2>Top Benefits of SIP</h2><ul><li>Start with a small amount</li><li>Builds financial discipline</li><li>Reduces market timing stress</li><li>Power of compounding</li><li>Flexibility</li></ul><h2>Final Thoughts</h2><p>SIP is not a shortcut to instant wealth — but it can be a powerful long-term strategy for building financial stability and future wealth.</p>"
+}
   {
     "title": "5 Mistakes to Avoid While Investing",
     "slug": "5-mistakes-to-avoid-while-investing",
