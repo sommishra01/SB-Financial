@@ -6,8 +6,6 @@ description: Learn what SIP is, how it works, its benefits, and why it is one of
   the smartest ways to build long-term wealth.
 category: SIP
 ---
-<h2>What is SIP? A Beginner’s Guide to Smart Investing</h2>
-
 If you’ve ever wanted to start investing but felt confused about where to begin, SIP might be one of the easiest and smartest ways to start.
 
 A <b>Systematic Investment Plan (SIP)</b> allows you to invest a fixed amount regularly in mutual funds — usually every month. Instead of waiting to save a large amount, SIP helps you begin with small contributions and build wealth over time.
