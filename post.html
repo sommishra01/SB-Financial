@@ -43,7 +43,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+ <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
@@ -58,8 +58,10 @@
     }
 
     try {
-      // 1. Load summary/meta from JSON
-      const res = await fetch("posts/posts.json");
+      // 1. Load posts.json
+      const res = await fetch("/posts/posts.json");
+      if (!res.ok) throw new Error("posts.json not found");
+
       const posts = await res.json();
       const post = posts.find(p => p.slug === slug);
 
@@ -68,10 +70,14 @@
         return;
       }
 
-      // 2. Load markdown file
-      const mdRes = await fetch(`posts/${slug}.md`);
+      // 2. Load markdown file using exact path from JSON
+      const mdRes = await fetch(post.file);
+
       if (!mdRes.ok) {
-        postContainer.innerHTML = "<h1>Blog file not found</h1><p>Markdown file missing.</p>";
+        postContainer.innerHTML = `
+          <h1>Blog file not found</h1>
+          <p>Markdown file missing: <code>${post.file}</code></p>
+        `;
         return;
       }
 
@@ -109,7 +115,10 @@
       `;
     } catch (error) {
       console.error("Error loading post:", error);
-      postContainer.innerHTML = "<h1>Error loading post</h1><p>Could not load the blog content.</p>";
+      postContainer.innerHTML = `
+        <h1>Error loading post</h1>
+        <p>${error.message}</p>
+      `;
     }
   }
 
