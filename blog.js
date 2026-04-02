@@ -4,7 +4,7 @@ async function loadBlogs() {
   if (!blogContainer) return;
 
   try {
-    const res = await fetch("posts/posts.json");
+    const res = await fetch("/posts/posts.json");
     const posts = await res.json();
 
     if (!posts.length) {
