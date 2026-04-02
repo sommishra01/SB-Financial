@@ -8,6 +8,7 @@ content:
     type: collection
     path: posts
     filename: "{fields.slug}.md"
+    format: yaml-frontmatter
 
     fields:
       - name: title
@@ -37,15 +38,8 @@ content:
 
       - name: category
         label: Category
-        type: select
+        type: string
         required: true
-        options:
-          - SIP
-          - Mutual Funds
-          - Insurance
-          - Tax Saving
-          - Stock Market
-          - Financial Planning
 
       - name: author
         label: Author
