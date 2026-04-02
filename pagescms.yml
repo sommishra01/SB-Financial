@@ -8,8 +8,6 @@ content:
     type: collection
     path: posts
     filename: "{fields.slug}.md"
-    view:
-      fields: [title, date, category]
     fields:
       - name: title
         label: Blog Title
@@ -40,13 +38,12 @@ content:
         label: Category
         type: select
         options:
-          values:
-            - SIP
-            - Mutual Funds
-            - Insurance
-            - Tax Saving
-            - Stock Market
-            - Financial Planning
+          - SIP
+          - Mutual Funds
+          - Insurance
+          - Tax Saving
+          - Stock Market
+          - Financial Planning
 
       - name: author
         label: Author
