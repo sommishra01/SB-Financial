@@ -43,86 +43,82 @@
     </div>
   </footer>
 
- <script src="script.js"></script>
+<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
-  async function loadPost() {
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get("slug");
-    const postContainer = document.getElementById("post-content");
+async function loadPost() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("slug");
+  const postContainer = document.getElementById("post-content");
 
-    if (!slug) {
-      postContainer.innerHTML = "<h1>Post not found</h1><p>No slug provided.</p>";
+  if (!slug) {
+    postContainer.innerHTML = "<h1>Post not found</h1><p>No slug provided in URL.</p>";
+    return;
+  }
+
+  try {
+    // Load posts metadata
+    const res = await fetch("posts/posts.json");
+    if (!res.ok) throw new Error("posts.json not found");
+
+    const posts = await res.json();
+    const post = posts.find(p => p.slug.trim() === slug.trim());
+
+    if (!post) {
+      postContainer.innerHTML = `<h1>Post not found</h1><p>No post matched slug: <strong>${slug}</strong></p>`;
       return;
     }
 
-    try {
-      // 1. Load posts.json
-      const res = await fetch("/posts/posts.json");
-      if (!res.ok) throw new Error("posts.json not found");
+    // Load markdown file
+    const mdPath = `posts/${post.slug}.md`;
+    const mdRes = await fetch(mdPath);
 
-      const posts = await res.json();
-      const post = posts.find(p => p.slug === slug);
-
-      if (!post) {
-        postContainer.innerHTML = "<h1>Post not found</h1><p>No matching post found.</p>";
-        return;
-      }
-
-      // 2. Load markdown file using exact path from JSON
-      const mdRes = await fetch(post.file);
-
-      if (!mdRes.ok) {
-        postContainer.innerHTML = `
-          <h1>Blog file not found</h1>
-          <p>Markdown file missing: <code>${post.file}</code></p>
-        `;
-        return;
-      }
-
-      const mdText = await mdRes.text();
-
-      // 3. Remove frontmatter safely
-      let content = mdText;
-      if (mdText.startsWith('---')) {
-        const parts = mdText.split('---');
-        if (parts.length >= 3) {
-          content = parts.slice(2).join('---').trim();
-        }
-      }
-
-      if (!content) {
-        content = "No blog content available.";
-      }
-
-      document.title = post.title + " - SB Financial";
-
+    if (!mdRes.ok) {
       postContainer.innerHTML = `
-        <img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:20px; margin-bottom:2rem; max-height:400px; object-fit:cover;">
-        
-        <span style="display:inline-block; background:#e6f4f1; color:#305f72; padding:0.4rem 1rem; border-radius:30px; font-size:0.9rem; font-weight:600; margin-bottom:1rem;">
-          ${post.category}
-        </span>
-
-        <h1 style="font-size:2.5rem; margin:1rem 0;">${post.title}</h1>
-        <p style="color:#777; margin-bottom:0.5rem;">${new Date(post.date).toDateString()}</p>
-        <p style="color:#555; font-weight:500; margin-bottom:2rem;">By ${post.author || "SB Financial"}</p>
-
-        <div class="blog-post-body" style="line-height:1.9; font-size:1.05rem;">
-          ${marked.parse(content)}
-        </div>
+        <h1>Blog file not found</h1>
+        <p>Expected file:</p>
+        <code>${mdPath}</code>
       `;
-    } catch (error) {
-      console.error("Error loading post:", error);
-      postContainer.innerHTML = `
-        <h1>Error loading post</h1>
-        <p>${error.message}</p>
-      `;
+      return;
     }
-  }
 
-  loadPost();
+    const mdText = await mdRes.text();
+
+    // Remove frontmatter
+    let content = mdText.replace(/^---[\s\S]*?---/, "").trim();
+
+    if (!content) {
+      content = "No blog content available.";
+    }
+
+    document.title = `${post.title} - SB Financial`;
+
+    postContainer.innerHTML = `
+      <img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:20px; margin-bottom:2rem; max-height:400px; object-fit:cover;">
+      
+      <span style="display:inline-block; background:#e6f4f1; color:#305f72; padding:0.4rem 1rem; border-radius:30px; font-size:0.9rem; font-weight:600; margin-bottom:1rem;">
+        ${post.category}
+      </span>
+
+      <h1 style="font-size:2.5rem; margin:1rem 0;">${post.title}</h1>
+      <p style="color:#777; margin-bottom:0.5rem;">${new Date(post.date).toDateString()}</p>
+      <p style="color:#555; font-weight:500; margin-bottom:2rem;">By ${post.author || "SB Financial"}</p>
+
+      <div class="blog-post-body" style="line-height:1.9; font-size:1.05rem;">
+        ${marked.parse(content)}
+      </div>
+    `;
+  } catch (error) {
+    console.error("Error loading post:", error);
+    postContainer.innerHTML = `
+      <h1>Error loading post</h1>
+      <p>${error.message}</p>
+    `;
+  }
+}
+
+loadPost();
 </script>
 </body>
 </html>
