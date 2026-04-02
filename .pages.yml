@@ -1,0 +1,52 @@
+media:
+  input: assets/uploads
+  output: /assets/uploads
+
+content:
+  - name: blogs
+    label: Blogs
+    type: collection
+    path: posts
+    filename: "{fields.slug}.md"
+    format: yaml-frontmatter
+
+    fields:
+      - name: title
+        label: Blog Title
+        type: string
+        required: true
+
+      - name: slug
+        label: Slug
+        type: string
+        required: true
+
+      - name: date
+        label: Publish Date
+        type: date
+        required: true
+
+      - name: image
+        label: Featured Image
+        type: image
+        required: true
+
+      - name: description
+        label: SEO Description / Excerpt
+        type: text
+        required: true
+
+      - name: category
+        label: Category
+        type: string
+        required: true
+
+      - name: author
+        label: Author
+        type: string
+        default: SB Financial
+
+      - name: body
+        label: Blog Content
+        type: markdown
+        required: true
