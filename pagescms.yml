@@ -8,6 +8,7 @@ content:
     type: collection
     path: posts
     filename: "{fields.slug}.md"
+
     fields:
       - name: title
         label: Blog Title
@@ -37,6 +38,7 @@ content:
       - name: category
         label: Category
         type: select
+        required: true
         options:
           - SIP
           - Mutual Funds
@@ -52,4 +54,5 @@ content:
 
       - name: body
         label: Blog Content
-        type: rich-text
+        type: markdown
+        required: true
