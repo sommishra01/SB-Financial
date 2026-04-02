@@ -116,7 +116,7 @@ SIP can be suitable for many types of investors, including:
 <ul><li>First-time investors</li>
 <li>Salaried employees</li>
 <li>Young professionals</li>
-<li>usiness owners</li>
+<li>Business owners</li>
 <li>Parents planning for children’s future</li>
 <li>People saving for retirement</li></ul>
 
@@ -169,7 +169,7 @@ Before starting a SIP, keep these points in mind:
 
 Know why you are investing.
 
-</strong>Examples:</strong>
+<strong>Examples:</strong>
 
 <ul><li>Emergency fund</li>
 <li>House down payment</li>
@@ -207,7 +207,7 @@ Starting SIP is important, but reviewing it from time to time is also necessary.
 
 <ul><li>Your goal is still the same</li>
 <li>Your SIP amount should be increased</li>
-<li>Your investment is aligned with your needs</ul></ol>
+<li>Your investment is aligned with your needs</li></ul></ol>
 
 <h2>Common Myths About SIP</h2>
 <ul><h3><li>Myth 1: SIP guarantees profit</li></h3>
