@@ -357,6 +357,74 @@ a {
   margin-top: 0.5rem;
   display: block;
 }
+/*========================
+FORM
+
+============================*/
+.modern-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  padding: 14px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0 5px;
+  font-size: 0.85rem;
+  color: #777;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label,
+.input-group select:focus + label,
+.input-group select:valid + label {
+  top: -8px;
+  font-size: 0.75rem;
+  color: #305f72;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  border-color: #305f72;
+  box-shadow: 0 0 0 2px rgba(48, 95, 114, 0.1);
+}
+
+.form-note {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: -10px;
+}
+
+.btn i {
+  margin-right: 6px;
+}
+
+
 
 /* =========================
    Social Icons
