@@ -21,6 +21,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
   }
+const form = document.forms['submit-to-google-sheet'];
+const msg = document.getElementById("msg");
+const phoneField = document.querySelector("#fullphone");
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  msg.innerHTML = "Sending...";
+
+  try {
+    phoneField.value = phoneInput.getNumber();
+
+    const response = await fetch('https://script.google.com/macros/s/AKfycbwEhzWuuHaiInoH6E2NXTUzvqYo4zqMzm0BI1pJ_ghIMpU5Q1By7o-XrgTtNQlbtcayDw/exec', {
+      method: 'POST',
+      body: new FormData(form)
+    });
+
+    msg.innerHTML = "✅ Message sent successfully!";
+    form.reset();
+
+    setTimeout(() => msg.innerHTML = "", 4000);
+
+  } catch (error) {
+    msg.innerHTML = "❌ Something went wrong. Try again.";
+  }
+});
 
   /* ============================================================
      MOBILE NAV TOGGLE
