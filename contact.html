@@ -59,16 +59,49 @@
   </div>
       </div>
       <div class="contact-form" data-aos="fade-left">
-        <form name="submit-to-google-sheet">
-          <input type="text" name="Name" placeholder="Your Name" required>
-          <input type="email" name="Email" placeholder="Your Email" required>
-          <input id="phone" type="tel" name="Mobile" placeholder="Enter phone number" required>
-          <input type="hidden" name="FullPhone" id="fullphone">
-          <textarea name="Message" placeholder="Your Message" rows="6"></textarea>
-          <button type="submit" class="btn">Send Message</button>
-          <span id="msg"></span>
-        </form>
-      </div>
+  <form name="submit-to-google-sheet" class="modern-form">
+    
+    <div class="input-group">
+      <input type="text" name="Name" placeholder=" " required>
+      <label>Your Name</label>
+    </div>
+
+    <div class="input-group">
+      <input type="email" name="Email" placeholder=" " required>
+      <label>Your Email</label>
+    </div>
+
+    <div class="input-group">
+      <input id="phone" type="tel" name="Mobile" placeholder=" " required>
+      <label>Phone Number</label>
+    </div>
+
+    <input type="hidden" name="FullPhone" id="fullphone">
+
+    <div class="input-group">
+      <select name="Service" required>
+        <option value="" disabled selected></option>
+        <option>Investment Planning</option>
+        <option>Mutual Fund Guidance</option>
+        <option>Portfolio Review</option>
+        <option>SIP Planning</option>
+      </select>
+      <label>Select Service</label>
+    </div>
+
+    <div class="input-group">
+      <textarea name="Message" rows="5" placeholder=" " required></textarea>
+      <label>Your Message</label>
+    </div>
+
+    <button type="submit" class="btn">
+      <i class="fas fa-paper-plane"></i> Send Message
+    </button>
+
+    <p class="form-note">We typically respond within 24 hours.</p>
+    <span id="msg"></span>
+  </form>
+</div>
     </div>
   </div>
 </section>
@@ -78,7 +111,6 @@
 <div class="footer-col">
   <h3>SB Financial</h3>
   <p>Helping you invest smarter through mutual funds, SIPs, and goal-based financial planning.</p>
-  
   <p class="arn">
   AMFI Registered Mutual Fund Distributor | ARN: 242968
   </p>
