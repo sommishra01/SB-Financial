@@ -12,27 +12,30 @@
  *   Text          : #1a1a1a / #333
  *   Muted         : #777
  */
-.hero-inner {
+..hero-inner {
   position: relative;
-  background: #101820;
+  overflow: hidden;
 }
 
+/* overlay only (NOT solid background) */
 .hero-inner::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(16, 24, 32, 0.6);
+  background: rgba(16, 24, 32, 0.45); /* lighter so animation visible */
   z-index: 1;
 }
 
+/* keep content above */
 .hero-content {
   position: relative;
   z-index: 2;
 }
 
+/* improve text */
 .hero-content h1 {
   color: #ffffff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 }
 
 .hero-content p {
