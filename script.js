@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ============================================================
-     GOOGLE SHEET FORM SUBMISSION (SAFE)
+     GOOGLE SHEET FORM (SAFE)
      ============================================================ */
   const form = document.forms['submit-to-google-sheet'];
   const msg = document.getElementById("msg");
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (form && msg) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       msg.innerHTML = "Sending...";
 
       try {
@@ -23,19 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
           body: new FormData(form)
         });
 
-        msg.innerHTML = "✅ Message sent successfully!";
+        msg.innerHTML = "✅ Message sent!";
         form.reset();
-
         setTimeout(() => msg.innerHTML = "", 4000);
 
-      } catch (error) {
-        msg.innerHTML = "❌ Something went wrong. Try again.";
+      } catch {
+        msg.innerHTML = "❌ Error. Try again.";
       }
     });
   }
 
   /* ============================================================
-     MOBILE NAVBAR
+     NAVBAR
      ============================================================ */
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -62,72 +60,51 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ============================================================
-     AOS INIT
+     AOS
      ============================================================ */
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 1000, once: true });
   }
 
   /* ============================================================
-     LOGO TICKER
+     CALCULATORS (SAFE MODE)
      ============================================================ */
-  const track = document.getElementById('logoTrack');
-  if (track) {
-    const originals = Array.from(track.querySelectorAll('.logo-item'));
-    originals.forEach(item => track.appendChild(item.cloneNode(true)));
-
-    let pos = 0;
-    const speed = 0.4;
-    let paused = false;
-    let halfWidth = 0;
-
-    setTimeout(() => { halfWidth = track.scrollWidth / 2; }, 100);
-    window.addEventListener('resize', () => { halfWidth = track.scrollWidth / 2; });
-
-    track.addEventListener('mouseenter', () => paused = true);
-    track.addEventListener('mouseleave', () => paused = false);
-
-    function tick() {
-      if (!paused && halfWidth > 0) {
-        pos += speed;
-        if (pos >= halfWidth) pos = 0;
-        track.style.transform = `translateX(-${pos}px)`;
-      }
-      requestAnimationFrame(tick);
-    }
-    tick();
-  }
-
-  /* ============================================================
-     CALCULATORS (ONLY RUN ON CALCULATOR PAGE)
-     ============================================================ */
-  if (!document.getElementById('panel-sip')) return;
 
   /* ── TAB SWITCHING ── */
   const tabBtns = document.querySelectorAll('.calc-tab-btn');
   const panels = document.querySelectorAll('.calc-panel');
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.getAttribute('data-tab');
+  if (tabBtns.length && panels.length) {
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
 
-      tabBtns.forEach(b => b.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
+        tabBtns.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
 
-      btn.classList.add('active');
-      document.getElementById('panel-' + target).classList.add('active');
+        btn.classList.add('active');
+
+        const panel = document.getElementById('panel-' + target);
+        if (panel) panel.classList.add('active');
+      });
     });
-  });
+  }
 
   /* ── SIP CALCULATOR ── */
   function calcSIP() {
-    const P = +document.getElementById('sip-amt').value;
-    const r = +document.getElementById('sip-rate').value / 100 / 12;
-    const n = +document.getElementById('sip-yrs').value * 12;
+    const amt = document.getElementById('sip-amt');
+    const rate = document.getElementById('sip-rate');
+    const yrs = document.getElementById('sip-yrs');
+
+    if (!amt || !rate || !yrs) return;
+
+    const P = +amt.value;
+    const r = +rate.value / 100 / 12;
+    const n = +yrs.value * 12;
 
     document.getElementById('sip-amt-val').textContent = '₹' + P.toLocaleString('en-IN');
-    document.getElementById('sip-rate-val').textContent = document.getElementById('sip-rate').value + '%';
-    document.getElementById('sip-yrs-val').textContent = document.getElementById('sip-yrs').value + ' yrs';
+    document.getElementById('sip-rate-val').textContent = rate.value + '%';
+    document.getElementById('sip-yrs-val').textContent = yrs.value + ' yrs';
 
     const corpus = r === 0 ? P * n : P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
     const invested = P * n;
@@ -139,66 +116,90 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   ['sip-amt','sip-rate','sip-yrs'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calcSIP);
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', calcSIP);
   });
   calcSIP();
 
   /* ── RETIREMENT CALCULATOR ── */
   function calcRetirement() {
-    const age = +document.getElementById('ret-age').value;
-    const retAge = +document.getElementById('ret-retage').value;
-    const exp = +document.getElementById('ret-exp').value;
-    const inf = +document.getElementById('ret-inf').value / 100;
+    const age = document.getElementById('ret-age');
+    const retAge = document.getElementById('ret-retage');
+    const exp = document.getElementById('ret-exp');
+    const inf = document.getElementById('ret-inf');
+    const roi = document.getElementById('ret-roi');
 
-    document.getElementById('ret-age-val').textContent = age + ' yrs';
-    document.getElementById('ret-retage-val').textContent = retAge + ' yrs';
-    document.getElementById('ret-exp-val').textContent = '₹' + exp.toLocaleString('en-IN');
-    document.getElementById('ret-inf-val').textContent = document.getElementById('ret-inf').value + '%';
-    document.getElementById('ret-roi-val').textContent = document.getElementById('ret-roi').value + '%';
+    if (!age || !retAge || !exp || !inf || !roi) return;
 
-    const yrs = retAge - age;
-    const futureExp = exp * Math.pow(1 + inf, yrs);
+    const a = +age.value;
+    const rA = +retAge.value;
+    const e = +exp.value;
+    const i = +inf.value / 100;
+
+    document.getElementById('ret-age-val').textContent = a + ' yrs';
+    document.getElementById('ret-retage-val').textContent = rA + ' yrs';
+    document.getElementById('ret-exp-val').textContent = '₹' + e.toLocaleString('en-IN');
+    document.getElementById('ret-inf-val').textContent = inf.value + '%';
+    document.getElementById('ret-roi-val').textContent = roi.value + '%';
+
+    const yrs = rA - a;
+    const futureExp = e * Math.pow(1 + i, yrs);
     const corpus = futureExp * 12 * 25;
 
     document.getElementById('ret-r-yrs').textContent = yrs + ' years';
     document.getElementById('ret-r-futexp').textContent = '₹' + Math.round(futureExp).toLocaleString('en-IN');
     document.getElementById('ret-r-corpus').textContent = '₹' + Math.round(corpus).toLocaleString('en-IN');
-    document.getElementById('ret-r-sip').textContent = '₹' + Math.round(corpus / (yrs * 12)).toLocaleString('en-IN') + '/mo';
+    document.getElementById('ret-r-sip').textContent =
+      '₹' + Math.round(corpus / (yrs * 12)).toLocaleString('en-IN') + '/mo';
 
-    document.querySelector('.timeline-fill').style.width = (age / retAge * 100) + '%';
+    const fill = document.querySelector('.timeline-fill');
+    if (fill) fill.style.width = (a / rA * 100) + '%';
   }
 
   ['ret-age','ret-retage','ret-exp','ret-inf','ret-roi'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calcRetirement);
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', calcRetirement);
   });
   calcRetirement();
 
   /* ── GOAL CALCULATOR ── */
   function calcGoal() {
-    const goal = +document.getElementById('goal-amt').value;
-    const yrs = +document.getElementById('goal-yrs').value;
-    const saved = +document.getElementById('goal-saved').value;
+    const goal = document.getElementById('goal-amt');
+    const yrs = document.getElementById('goal-yrs');
+    const saved = document.getElementById('goal-saved');
+    const rate = document.getElementById('goal-rate');
 
-    document.getElementById('goal-amt-val').textContent = '₹' + goal.toLocaleString('en-IN');
-    document.getElementById('goal-yrs-val').textContent = yrs + ' yrs';
-    document.getElementById('goal-rate-val').textContent = document.getElementById('goal-rate').value + '%';
-    document.getElementById('goal-saved-val').textContent = '₹' + saved.toLocaleString('en-IN');
+    if (!goal || !yrs || !saved || !rate) return;
 
-    const remaining = goal - saved;
-    const sip = remaining / (yrs * 12);
+    const g = +goal.value;
+    const y = +yrs.value;
+    const s = +saved.value;
 
-    document.getElementById('goal-r-target').textContent = '₹' + goal.toLocaleString('en-IN');
-    document.getElementById('goal-r-saved').textContent = '₹' + saved.toLocaleString('en-IN');
+    document.getElementById('goal-amt-val').textContent = '₹' + g.toLocaleString('en-IN');
+    document.getElementById('goal-yrs-val').textContent = y + ' yrs';
+    document.getElementById('goal-rate-val').textContent = rate.value + '%';
+    document.getElementById('goal-saved-val').textContent = '₹' + s.toLocaleString('en-IN');
+
+    const remaining = g - s;
+    const sip = remaining / (y * 12);
+
+    document.getElementById('goal-r-target').textContent = '₹' + g.toLocaleString('en-IN');
+    document.getElementById('goal-r-saved').textContent = '₹' + s.toLocaleString('en-IN');
     document.getElementById('goal-r-remaining').textContent = '₹' + remaining.toLocaleString('en-IN');
-    document.getElementById('goal-r-sip').textContent = '₹' + Math.round(sip).toLocaleString('en-IN') + '/mo';
+    document.getElementById('goal-r-sip').textContent =
+      '₹' + Math.round(sip).toLocaleString('en-IN') + '/mo';
 
-    const pct = Math.min(100, (saved / goal) * 100);
-    document.getElementById('goal-progress-fill').style.width = pct + '%';
-    document.getElementById('goal-coverage-pct').textContent = Math.round(pct) + '%';
+    const pct = Math.min(100, (s / g) * 100);
+    const fill = document.getElementById('goal-progress-fill');
+    const label = document.getElementById('goal-coverage-pct');
+
+    if (fill) fill.style.width = pct + '%';
+    if (label) label.textContent = Math.round(pct) + '%';
   }
 
   ['goal-amt','goal-yrs','goal-rate','goal-saved'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calcGoal);
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', calcGoal);
   });
   calcGoal();
 
