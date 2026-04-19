@@ -12,7 +12,7 @@
  *   Text          : #1a1a1a / #333
  *   Muted         : #777
  */
-..hero-inner {
+.hero-inner {
   position: relative;
   overflow: hidden;
 }
