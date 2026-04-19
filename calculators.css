@@ -41,6 +41,12 @@
 .hero-content p {
   color: rgba(255,255,255,0.85);
 }
+
+.donut-svg circle {
+  transition: stroke-dashoffset 0.6s ease, transform 0.6s ease;
+  transform-origin: 50% 50%;
+}
+
 /* ============================================================
    ACTIVE NAV LINK
    ============================================================ */
