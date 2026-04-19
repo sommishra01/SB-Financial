@@ -156,6 +156,35 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('sip-r-invested').textContent = fmt(invested);
       document.getElementById('sip-r-returns').textContent = fmt(corpus - invested);
       document.getElementById('sip-r-corpus').textContent = fmt(corpus);
+    // ===== DONUT CHART UPDATE =====
+const returns = corpus - invested;
+const circumference = 2 * Math.PI * 38;
+
+const investedPct = invested / corpus;
+const returnsPct = returns / corpus;
+
+// Invested arc
+const investedOffset = circumference * (1 - investedPct);
+const investedArc = document.getElementById("sip-arc-invested");
+
+investedArc.style.strokeDasharray = circumference;
+investedArc.style.strokeDashoffset = investedOffset;
+
+// Returns arc
+const returnsOffset = circumference * (1 - returnsPct);
+const returnsArc = document.getElementById("sip-arc-returns");
+
+returnsArc.style.strokeDasharray = circumference;
+returnsArc.style.strokeDashoffset = returnsOffset;
+
+// Rotate returns arc to start after invested
+returnsArc.style.transform = `rotate(${investedPct * 360}deg)`;
+returnsArc.style.transformOrigin = "50% 50%";
+
+// Center % text
+document.getElementById("sip-returns-pct").innerText =
+  Math.round(returnsPct * 100) + "%";
+    
     }
 
     ['sip-amt','sip-rate','sip-yrs'].forEach(id => {
