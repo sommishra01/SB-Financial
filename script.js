@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
 
   /* ============================================================
      GOOGLE SHEET FORM (SAFE)
@@ -67,10 +67,25 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ============================================================
-     CALCULATORS (SAFE MODE)
+     SLIDER COLOR SYNC (IMPORTANT FIX)
      ============================================================ */
+  function syncSlider(el) {
+    const min = parseFloat(el.min);
+    const max = parseFloat(el.max);
+    const val = parseFloat(el.value);
 
-  /* ── TAB SWITCHING ── */
+    const pct = ((val - min) / (max - min)) * 100;
+    el.style.setProperty('--pct', pct + '%');
+  }
+
+  document.querySelectorAll('input[type="range"]').forEach(el => {
+    syncSlider(el);
+    el.addEventListener('input', () => syncSlider(el));
+  });
+
+  /* ============================================================
+     TAB SWITCHING
+     ============================================================ */
   const tabBtns = document.querySelectorAll('.calc-tab-btn');
   const panels = document.querySelectorAll('.calc-panel');
 
@@ -90,7 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ── SIP CALCULATOR ── */
+  /* ============================================================
+     SIP CALCULATOR
+     ============================================================ */
   function calcSIP() {
     const amt = document.getElementById('sip-amt');
     const rate = document.getElementById('sip-rate');
@@ -121,7 +138,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   calcSIP();
 
-  /* ── RETIREMENT CALCULATOR ── */
+  /* ============================================================
+     RETIREMENT CALCULATOR
+     ============================================================ */
   function calcRetirement() {
     const age = document.getElementById('ret-age');
     const retAge = document.getElementById('ret-retage');
@@ -162,7 +181,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   calcRetirement();
 
-  /* ── GOAL CALCULATOR ── */
+  /* ============================================================
+     GOAL CALCULATOR
+     ============================================================ */
   function calcGoal() {
     const goal = document.getElementById('goal-amt');
     const yrs = document.getElementById('goal-yrs');
