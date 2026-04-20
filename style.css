@@ -769,7 +769,52 @@ FORM
   transform: rotate(45deg);
 }
 
+/* PREMIUM CARDS */
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.4s;
+}
 
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* GRADIENT HEADINGS */
+.section-title {
+  background: linear-gradient(90deg,#00c6ff,#0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* FOUNDER QUOTE */
+.founder-quote {
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 4px solid #00c6ff;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  font-style: italic;
+}
+
+/* IMAGE EFFECT */
+.profile img {
+  border-radius: 20px;
+  transition: 0.4s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.profile img:hover {
+  transform: scale(1.05);
+}
+
+/* FAQ HOVER */
+.faq-item:hover {
+  transform: translateX(6px);
+}
 
 
 
