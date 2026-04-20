@@ -47,14 +47,22 @@ faqItems.forEach(item => {
   const question = item.querySelector(".faq-question");
 
   question.addEventListener("click", () => {
-    item.classList.toggle("active");
+    const isActive = item.classList.contains("active");
 
-    // Close others (optional for cleaner UX)
-    faqItems.forEach(other => {
-      if (other !== item) {
-        other.classList.remove("active");
-      }
-    });
+    // Close all
+    faqItems.forEach(i => i.classList.remove("active"));
+
+    // Open current if not active
+    if (!isActive) item.classList.add("active");
+  });
+});
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+      .scrollIntoView({ behavior: "smooth" });
   });
 });
 
