@@ -815,6 +815,14 @@ FORM
 .faq-item:hover {
   transform: translateX(6px);
 }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
 
+.faq-item.active .faq-answer {
+  max-height: 200px; /* adjust if needed */
+}
 
 
