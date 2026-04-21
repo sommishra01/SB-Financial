@@ -769,8 +769,9 @@ FORM
   transform: rotate(45deg);
 }
 
-/* PREMIUM CARDS */
-.card {
+/* ================= ABOUT PREMIUM ================= */
+
+.about-page .card {
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(12px);
   border-radius: 16px;
@@ -778,20 +779,18 @@ FORM
   transition: 0.4s;
 }
 
-.card:hover {
+.about-page .card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* GRADIENT HEADINGS */
-.section-title {
+.about-page .section-title {
   background: linear-gradient(90deg,#00c6ff,#0072ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* FOUNDER QUOTE */
-.founder-quote {
+.about-page .founder-quote {
   margin-top: 20px;
   padding: 15px;
   border-left: 4px solid #00c6ff;
@@ -800,29 +799,26 @@ FORM
   font-style: italic;
 }
 
-/* IMAGE EFFECT */
-.profile img {
+.about-page .profile img {
   border-radius: 20px;
   transition: 0.4s;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.profile img:hover {
+.about-page .profile img:hover {
   transform: scale(1.05);
 }
 
-/* FAQ HOVER */
-.faq-item:hover {
+.about-page .faq-item:hover {
   transform: translateX(6px);
 }
-.faq-answer {
+
+.about-page .faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
 
-.faq-item.active .faq-answer {
-  max-height: 200px; /* adjust if needed */
+.about-page .faq-item.active .faq-answer {
+  max-height: 200px;
 }
-
-
