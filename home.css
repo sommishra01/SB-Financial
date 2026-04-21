@@ -552,3 +552,18 @@ How it works
     max-width: 310px;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-main-content h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-main-content p {
+    font-size: 1rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
