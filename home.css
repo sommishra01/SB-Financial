@@ -608,3 +608,40 @@ How it works
   background: rgba(255,255,255,0.1);
   border-color: #fff;
 }
+
+/* =========================
+   BUTTON SHINE EFFECT
+========================= */
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine layer */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.2)
+  );
+  transform: skewX(-20deg);
+}
+
+/* Animate on hover */
+.btn-primary:hover::before {
+  animation: shine 0.8s ease forwards;
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
