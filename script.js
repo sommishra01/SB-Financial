@@ -20,10 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
           phoneField.value = phoneInput.getNumber();
         }
 
-        await fetch(scriptURL, {
+        const response = await fetch(scriptURL, {
           method: 'POST',
           body: new FormData(form)
         });
+
+        if (!response.ok) throw new Error("Network error");
 
         if (msg) msg.innerHTML = "✅ Message sent successfully!";
         form.reset();
@@ -34,37 +36,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
       } catch (error) {
         if (msg) msg.innerHTML = "❌ Something went wrong. Try again.";
+        console.error(error);
       }
     });
   }
-/*=================
-faqs
-===================*/
 
+  /* ============================================================
+     FAQ TOGGLE (SAFE)
+     ============================================================ */
   const faqItems = document.querySelectorAll(".faq-item");
 
-faqItems.forEach(item => {
-  const question = item.querySelector(".faq-question");
+  if (faqItems.length > 0) {
+    faqItems.forEach(item => {
+      const question = item.querySelector(".faq-question");
 
-  question.addEventListener("click", () => {
-    const isActive = item.classList.contains("active");
+      if (question) {
+        question.addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
 
-    // Close all
-    faqItems.forEach(i => i.classList.remove("active"));
+          faqItems.forEach(i => i.classList.remove("active"));
 
-    // Open current if not active
-    if (!isActive) item.classList.add("active");
+          if (!isActive) item.classList.add("active");
+        });
+      }
+    });
+  }
+
+  /* ============================================================
+     SMOOTH SCROLL (SAFE)
+     ============================================================ */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      const target = document.querySelector(this.getAttribute("href"));
+
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
   });
-});
-
-// SMOOTH SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href"))
-      .scrollIntoView({ behavior: "smooth" });
-  });
-});
 
   /* ============================================================
      MOBILE NAV TOGGLE
@@ -85,11 +95,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   }
 
   /* ============================================================
-     VANTA HERO BACKGROUND
+     VANTA HERO BACKGROUND (SAFE INIT)
      ============================================================ */
-  if (typeof VANTA !== 'undefined' && document.getElementById('vanta-bg')) {
+  const vantaEl = document.getElementById('vanta-bg');
+
+  if (typeof VANTA !== 'undefined' && vantaEl && !vantaEl.dataset.vantaLoaded) {
     VANTA.NET({
-      el: '#vanta-bg',
+      el: vantaEl,
       mouseControls: true,
       touchControls: true,
       color: 0x305f72,
@@ -98,6 +110,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       maxDistance: 20,
       spacing: 18,
     });
+
+    vantaEl.dataset.vantaLoaded = "true";
   }
 
   /* ============================================================
@@ -143,7 +157,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
      ============================================================ */
   if (document.getElementById('panel-sip')) {
 
-    /* ===== Utility Functions ===== */
     function fmt(n) {
       if (n >= 1e7) return '₹' + (n / 1e7).toFixed(2) + ' Cr';
       if (n >= 1e5) return '₹' + (n / 1e5).toFixed(2) + ' L';
@@ -162,12 +175,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       el.style.setProperty('--pct', pct + '%');
     }
 
-    document.querySelectorAll('input[type="range"]').forEach(el => {
-      syncSlider(el);
-      el.addEventListener('input', () => syncSlider(el));
-    });
+    const ranges = document.querySelectorAll('input[type="range"]');
 
-    /* ===== SIP Calculator ===== */
+    if (ranges.length > 0) {
+      ranges.forEach(el => {
+        syncSlider(el);
+        el.addEventListener('input', () => syncSlider(el));
+      });
+    }
+
     function calcSIP() {
       const P = +document.getElementById('sip-amt').value;
       const r = +document.getElementById('sip-rate').value / 100 / 12;
@@ -184,55 +200,49 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       document.getElementById('sip-r-invested').textContent = fmt(invested);
       document.getElementById('sip-r-returns').textContent = fmt(corpus - invested);
       document.getElementById('sip-r-corpus').textContent = fmt(corpus);
-    // ===== DONUT CHART UPDATE =====
-const returns = corpus - invested;
-const circumference = 2 * Math.PI * 38;
 
-const investedPct = invested / corpus;
-const returnsPct = returns / corpus;
+      const investedArc = document.getElementById("sip-arc-invested");
+      const returnsArc = document.getElementById("sip-arc-returns");
 
-// Invested arc
-const investedOffset = circumference * (1 - investedPct);
-const investedArc = document.getElementById("sip-arc-invested");
+      if (investedArc && returnsArc) {
+        const returns = corpus - invested;
+        const circumference = 2 * Math.PI * 38;
 
-investedArc.style.strokeDasharray = circumference;
-investedArc.style.strokeDashoffset = investedOffset;
+        const investedPct = invested / corpus;
+        const returnsPct = returns / corpus;
 
-// Returns arc
-const returnsOffset = circumference * (1 - returnsPct);
-const returnsArc = document.getElementById("sip-arc-returns");
+        investedArc.style.strokeDasharray = circumference;
+        investedArc.style.strokeDashoffset = circumference * (1 - investedPct);
 
-returnsArc.style.strokeDasharray = circumference;
-returnsArc.style.strokeDashoffset = returnsOffset;
+        returnsArc.style.strokeDasharray = circumference;
+        returnsArc.style.strokeDashoffset = circumference * (1 - returnsPct);
 
-// Rotate returns arc to start after invested
-returnsArc.style.transform = `rotate(${investedPct * 360}deg)`;
-returnsArc.style.transformOrigin = "50% 50%";
+        returnsArc.style.transform = `rotate(${investedPct * 360}deg)`;
+        returnsArc.style.transformOrigin = "50% 50%";
 
-// Center % text
-document.getElementById("sip-returns-pct").innerText =
-  Math.round(returnsPct * 100) + "%";
-    
+        const pctText = document.getElementById("sip-returns-pct");
+        if (pctText) pctText.innerText = Math.round(returnsPct * 100) + "%";
+      }
     }
 
     ['sip-amt','sip-rate','sip-yrs'].forEach(id => {
-      document.getElementById(id).addEventListener('input', calcSIP);
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', calcSIP);
     });
 
     calcSIP();
 
-    /* ===== Tab Switching ===== */
     document.querySelectorAll('.calc-tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.calc-tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
 
         btn.classList.add('active');
-        document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+        const panel = document.getElementById('panel-' + btn.dataset.tab);
+        if (panel) panel.classList.add('active');
       });
     });
 
-    /* ===== Retirement Calculator ===== */
     function calcRetirement() {
       const age = +document.getElementById('ret-age').value;
       const retAge = +document.getElementById('ret-retage').value;
@@ -273,12 +283,12 @@ document.getElementById("sip-returns-pct").innerText =
     }
 
     ['ret-age','ret-retage','ret-exp','ret-inf','ret-roi'].forEach(id => {
-      document.getElementById(id).addEventListener('input', calcRetirement);
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', calcRetirement);
     });
 
     calcRetirement();
 
-    /* ===== Goal Calculator ===== */
     function calcGoal() {
       const goal = +document.getElementById('goal-amt').value;
       const yrs = +document.getElementById('goal-yrs').value;
@@ -306,26 +316,34 @@ document.getElementById("sip-returns-pct").innerText =
       document.getElementById('goal-r-sip').textContent = fmt(sip) + '/mo';
 
       const pct = Math.min(100, (fvSaved / goal) * 100);
-      document.getElementById('goal-progress-fill').style.width = pct + '%';
-      document.getElementById('goal-coverage-pct').textContent = Math.round(pct) + '%';
+      const fill = document.getElementById('goal-progress-fill');
+      const pctText = document.getElementById('goal-coverage-pct');
+
+      if (fill) fill.style.width = pct + '%';
+      if (pctText) pctText.textContent = Math.round(pct) + '%';
     }
 
     ['goal-amt','goal-yrs','goal-rate','goal-saved'].forEach(id => {
-      document.getElementById(id).addEventListener('input', calcGoal);
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', calcGoal);
     });
 
     calcGoal();
 
-    /* ===== Goal Presets ===== */
     document.querySelectorAll('.preset-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.getElementById('goal-amt').value = btn.dataset.amt;
-        document.getElementById('goal-yrs').value = btn.dataset.yrs;
+        const amt = document.getElementById('goal-amt');
+        const yrs = document.getElementById('goal-yrs');
 
-        syncSlider(document.getElementById('goal-amt'));
-        syncSlider(document.getElementById('goal-yrs'));
+        if (amt && yrs) {
+          amt.value = btn.dataset.amt;
+          yrs.value = btn.dataset.yrs;
 
-        calcGoal();
+          syncSlider(amt);
+          syncSlider(yrs);
+
+          calcGoal();
+        }
       });
     });
 
