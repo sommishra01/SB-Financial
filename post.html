@@ -150,11 +150,14 @@ async function loadPost() {
       <div class="blog-post-body">
         ${marked.parse(content)}
       </div>
+ <div class="share-section">
+  <h3>Found this helpful? Share it 👇</h3>
 
       <div class="share-buttons">
         <a href="https://wa.me/?text=${encodeURIComponent(window.location.href)}" target="_blank">WhatsApp</a>
         <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}" target="_blank">Twitter</a>
         <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank">LinkedIn</a>
+      </div>
       </div>
     `;
 
