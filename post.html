@@ -12,6 +12,7 @@
 
 <body>
 
+<!-- Progress Bar -->
 <div id="progress-bar"></div>
 
 <!-- Navbar -->
@@ -41,56 +42,8 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="container footer-grid"><!-- Column 1: Brand -->
-<div class="footer-col">
-  <h3>SB Financial</h3>
-  <p>Helping you invest smarter through mutual funds, SIPs, and goal-based financial planning.</p>
-  <p class="arn">
-  AMFI Registered Mutual Fund Distributor | ARN: 242968
-  </p>
-</div>
-
-<!-- Column 2: Quick Links -->
-<div class="footer-col">
-  <h4>Quick Links</h4>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/services">Services</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/contact">Contact</a></li>
-    <li><a href="/calculators">Calculators</a></li>
-  </ul>
-</div>
-
-<!-- Column 3: Services -->
-<div class="footer-col">
-  <h4>Services</h4>
-  <ul>
-    <li><a href="#">Investment Planning</a></li>
-    <li><a href="#">Mutual Fund Guidance</a></li>
-    <li><a href="#">Portfolio Review</a></li>
-    <li><a href="#">SIP Planning</a></li>
-  </ul>
-</div>
-
-<!-- Column 4: Contact -->
-<div class="footer-col">
-  <h4>Contact</h4>
-  <p>Email: sbfinancial03@gmail.com</p>
-  <p>Phone: +91 90447 96693</p>
-</div>
-
-  </div>  <!-- Bottom Section -->  <div class="footer-bottom">
-    <p>
-      © 2025 SB Financial |
-      <a href="/privacy">Privacy Policy</a> |
-      <a href="/terms">Terms & Conditions</a> |
-      <a href="/disclaimer">Disclaimer</a>
-    </p><p class="disclaimer-text">
-  Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.
-</p>
-
+  <div class="container footer-container">
+    <p>&copy; 2025 SB Financial</p>
   </div>
 </footer>
 
@@ -115,30 +68,37 @@ async function loadPost() {
 
     const mdText = await res.text();
 
-    // Parse frontmatter
-    const match = mdText.match(/^---[\r\n]+([\s\S]*?)[\r\n]+---/);
+    /* ===== FRONTMATTER PARSE (ROBUST) ===== */
     let meta = {};
+    const match = mdText.match(/^---([\s\S]*?)---/);
 
     if (match) {
-      match[1].split("\\n").forEach(line => {
-        const [key, ...rest] = line.split(":");
-        if (key && rest.length) {
-          meta[key.trim()] = rest.join(":").trim();
+      const lines = match[1].trim().split("\n");
+
+      lines.forEach(line => {
+        const parts = line.split(":");
+        const key = parts.shift()?.trim();
+        const value = parts.join(":").trim();
+
+        if (key && value) {
+          meta[key] = value;
         }
       });
     }
 
-    const content = mdText.replace(/^---[\r\n]+[\s\S]*?[\r\n]+---/, "").trim();
+    /* ===== REMOVE FRONTMATTER ===== */
+    const content = mdText.replace(/^---[\s\S]*?---/, "").trim();
 
     document.title = `${meta.title || slug} - SB Financial`;
 
+    /* ===== RENDER ===== */
     postContainer.innerHTML = `
       ${meta.image ? `
         <div class="post-hero">
-          <img src="${meta.image}">
+          <img src="${meta.image}" alt="${meta.title}">
           <div class="post-hero-content">
             <span>${meta.category || ""}</span>
-            <h1>${meta.title}</h1>
+            <h1>${meta.title || slug}</h1>
             <div class="post-meta">
               ${meta.date ? new Date(meta.date).toDateString() : ""} • 
               <span id="reading-time"></span> • 
@@ -161,7 +121,7 @@ async function loadPost() {
       </div>
     `;
 
-    // 👉 IMPORTANT: run AFTER render
+    /* ===== RUN FEATURES ===== */
     generateTOC();
     calculateReadingTime();
 
@@ -170,7 +130,7 @@ async function loadPost() {
   }
 }
 
-/* ===== TOC ===== */
+/* ===== TABLE OF CONTENTS ===== */
 function generateTOC() {
   const content = document.querySelector(".blog-post-body");
   const toc = document.getElementById("toc");
@@ -196,20 +156,20 @@ function generateTOC() {
   toc.innerHTML = html;
 }
 
-/* ===== Reading Time ===== */
+/* ===== READING TIME ===== */
 function calculateReadingTime() {
   const content = document.querySelector(".blog-post-body");
   const el = document.getElementById("reading-time");
 
   if (!content || !el) return;
 
-  const words = content.innerText.split(/\\s+/).length;
+  const words = content.innerText.split(/\s+/).length;
   const time = Math.ceil(words / 200);
 
   el.innerText = `${time} min read`;
 }
 
-/* ===== Progress Bar ===== */
+/* ===== PROGRESS BAR ===== */
 window.addEventListener("scroll", () => {
   const scroll = document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -218,6 +178,7 @@ window.addEventListener("scroll", () => {
   document.getElementById("progress-bar").style.width = progress + "%";
 });
 
+/* ===== INIT ===== */
 loadPost();
 </script>
 
