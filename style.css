@@ -1109,3 +1109,48 @@ FORM
 .toc-box a:hover {
   color: #305f72;
 }
+
+/* CTA Box */
+.cta-box {
+  background: #f5f9f8;
+  padding: 2rem;
+  border-radius: 16px;
+  margin: 3rem 0 2rem; /* space above & below */
+  text-align: center;
+}
+
+.cta-box h3 {
+  margin-bottom: 0.5rem;
+}
+
+.cta-box p {
+  margin-bottom: 1.2rem;
+  color: #555;
+}
+
+/* Share Section */
+.share-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* important for mobile */
+  margin-top: 1rem;
+}
+
+.share-buttons a {
+  padding: 0.7rem 1.5rem;
+  background: #305f72;
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.share-buttons a:hover {
+  background: #254b59;
+}
