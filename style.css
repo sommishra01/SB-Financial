@@ -1127,6 +1127,23 @@ FORM
   margin-bottom: 1.2rem;
   color: #555;
 }
+.cta-box .btn {
+  display: inline-block;
+  background: #f4c04e;
+  color: #222;
+  padding: 0.9rem 1.6rem;
+  border-radius: 50px; /* smooth pill shape */
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  white-space: nowrap; /* prevents breaking into 2 lines */
+  text-align: center;
+  transition: 0.3s ease;
+}
+.cta-box .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
 
 /* Share Section */
 .share-section {
@@ -1153,4 +1170,10 @@ FORM
 
 .share-buttons a:hover {
   background: #254b59;
+}
+@media (max-width: 480px) {
+  .cta-box .btn {
+    width: 100%;
+    max-width: 260px;
+  }
 }
