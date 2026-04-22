@@ -1066,3 +1066,12 @@ FORM
     font-size: 0.75rem;
   }
 }
+
+.blog-post-body {
+  max-width: 720px;
+  margin: auto;
+}
+.blog-post-body p {
+  font-weight: 400;
+  color: #2b2b2b;
+}
