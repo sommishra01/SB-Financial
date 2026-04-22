@@ -116,7 +116,7 @@ async function loadPost() {
     const mdText = await res.text();
 
     // Parse frontmatter
-    const match = mdText.match(/^---\\n([\\s\\S]*?)\\n---/);
+    const match = mdText.match(/^---[\r\n]+([\s\S]*?)[\r\n]+---/);
     let meta = {};
 
     if (match) {
@@ -128,7 +128,7 @@ async function loadPost() {
       });
     }
 
-    const content = mdText.replace(/^---[\\s\\S]*?---/, "").trim();
+    const content = mdText.replace(/^---[\r\n]+[\s\S]*?[\r\n]+---/, "").trim();
 
     document.title = `${meta.title || slug} - SB Financial`;
 
