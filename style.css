@@ -1429,3 +1429,12 @@ section {
   margin: 10px auto 0;
   border-radius: 10px;
 }
+
+.main-cta .btn {
+  animation: floatBtn 2s infinite ease-in-out;
+}
+
+@keyframes floatBtn {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
