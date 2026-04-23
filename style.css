@@ -1177,3 +1177,109 @@ FORM
     max-width: 260px;
   }
 }
+
+/* =========================
+   SIP PAGE ADD-ON STYLES
+========================= */
+
+/* Slightly more premium hero feel */
+.hero-inner {
+  background: linear-gradient(135deg, #101820, #305f72);
+}
+
+/* Service intro text spacing */
+.service-intro {
+  max-width: 750px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Improve feature cards for services */
+.feature-card {
+  border: 1px solid #e6eeee;
+}
+
+.feature-card:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* Step / Process section (NEW) */
+.process-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.process-step {
+  flex: 1 1 220px;
+  max-width: 260px;
+  background: #f5f9f8;
+  padding: 1.5rem;
+  border-radius: 14px;
+  text-align: center;
+  position: relative;
+}
+
+.process-step span {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: #305f72;
+  color: #fff;
+  border-radius: 50%;
+  line-height: 35px;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+/* Trust section (NEW) */
+.trust-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.trust-box h3 {
+  color: #305f72;
+  margin-bottom: 0.5rem;
+}
+
+/* CTA upgrade (service-specific) */
+.cta.service-cta {
+  background: linear-gradient(135deg, #305f72, #214655);
+}
+
+.cta.service-cta .btn {
+  background: #f4c04e;
+  color: #222;
+}
+
+.cta.service-cta .btn:hover {
+  background: #e5ae3c;
+}
+
+/* =========================
+   MOBILE FIX (SERVICE PAGE)
+========================= */
+
+@media (max-width: 768px) {
+
+  .service-intro {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  .process-step {
+    max-width: 100%;
+  }
+
+}
+
