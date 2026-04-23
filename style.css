@@ -1398,3 +1398,34 @@ section {
     max-width: 100%;
   }
 }
+.trust-cta {
+  background: #214655;
+  opacity: 0.9;
+}
+
+.main-cta {
+  background: linear-gradient(135deg, #305f72, #1e3f4d);
+  transform: scale(1.02);
+}
+
+.main-cta .btn {
+  margin-top: 15px;
+}
+
+  .features {
+  border-top: 1px solid #eef3f3;
+}
+
+.section-title {
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 50px;
+  height: 3px;
+  background: #305f72;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 10px;
+}
