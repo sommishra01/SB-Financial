@@ -165,27 +165,7 @@ cards.forEach((card, index) => {
   }, index * 150);
 });
 
-  const text = "SIP Planning for Long-Term Wealth";
-let index = 0;
-
-function typeEffect() {
-  if (index < text.length) {
-    document.getElementById("typing-text").innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeEffect, 40);
-  }
-}
-
-window.addEventListener("load", typeEffect);
-
-window.addEventListener("scroll", () => {
-  const nav = document.querySelector(".navbar");
-  if (window.scrollY > 50) {
-    nav.style.boxShadow = "0 6px 20px rgba(0,0,0,0.08)";
-  } else {
-    nav.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
-  }
-});
+  
   
   /* ============================================================
      CALCULATORS PAGE LOGIC
