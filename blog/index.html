@@ -90,8 +90,16 @@
 
 <script>
 async function loadPost() {
+  const path = window.location.pathname;
+
+// Try getting slug from clean URL (/blog/slug)
+let slug = path.split("/blog/")[1];
+
+// Fallback (for old URLs like ?slug=)
+if (!slug) {
   const params = new URLSearchParams(window.location.search);
-  const slug = params.get("slug");
+  slug = params.get("slug");
+}
   const postContainer = document.getElementById("post-content");
 
   if (!slug) {
