@@ -49,7 +49,7 @@ async function loadBlogs() {
             ${image ? `<img src="${image}" style="width:100%; border-radius:12px; margin-bottom:1rem;">` : ""}
             
             <h3>
-              <a href="/blog/index.html?slug=${slug}">
+              <a href="/blog/${slug}">
                 ${title}
               </a>
             </h3>
