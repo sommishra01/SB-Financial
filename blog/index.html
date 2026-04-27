@@ -90,15 +90,17 @@
 
 <script>
 async function loadPost() {
-  const path = window.location.pathname;
+  let slug = null;
 
-// Try getting slug from clean URL (/blog/slug)
-let slug = path.split("/blog/")[1];
+// 1. First try from URL param (?slug=...)
+const params = new URLSearchParams(window.location.search);
+slug = params.get("slug");
 
-// Fallback (for old URLs like ?slug=)
+// 2. If not found, try clean URL (/blog/slug)
 if (!slug) {
-  const params = new URLSearchParams(window.location.search);
-  slug = params.get("slug");
+  const path = window.location.pathname;
+  const parts = path.split("/blog/");
+  slug = parts[1];
 }
   const postContainer = document.getElementById("post-content");
 
@@ -108,7 +110,7 @@ if (!slug) {
   }
 
   try {
-    const res = await fetch(`posts/${slug}.md`);
+    const res = await fetch(`/posts/${slug}.md`);
     if (!res.ok) throw new Error("Blog file not found");
 
     const mdText = await res.text();
