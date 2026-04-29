@@ -12,7 +12,7 @@ If you’ve ever wanted to start investing but felt confused about where to begi
 
 A <b>Systematic Investment Plan (SIP)</b> allows you to invest a fixed amount regularly in mutual funds — usually every month. Instead of waiting to save a large amount, SIP helps you begin with small contributions and build wealth over time.
 
-Whether you are a student, salaried employee, freelancer, or business owner, SIP planning can be a simple and disciplined way to invest for your future.
+Whether you are a student, salaried employee, freelancer, or business owner, <a href="/sip-planning">SIP planning</a> can be a simple and disciplined way to invest for your future.
 
 <h2>What Does SIP Mean?</h2>
 
