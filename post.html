@@ -146,10 +146,7 @@ async function loadPost() {
               ${meta.date ? new Date(meta.date).toDateString() : ""} • 
               <span id="reading-time"></span> • 
               ${meta.author || "SB Financial"}
-              <div class="author-box">
-  <h4>Written by SB Financial</h4>
-  <p>AMFI Registered Mutual Fund Distributor helping investors build long-term wealth through SIPs and smart financial planning.</p>
-</div>
+    
             </div>
           </div>
         </div>
@@ -160,6 +157,10 @@ async function loadPost() {
       <div class="blog-post-body">
         ${marked.parse(content)}
       </div>
+      <div class="author-box">
+  <h4>Written by SB Financial</h4>
+  <p>AMFI Registered Mutual Fund Distributor helping investors build long-term wealth through SIPs and smart financial planning.</p>
+</div>
  <div class="cta-box">
   <h3>Want help choosing the right SIP?</h3>
   <p>Get a FREE expert consultation tailored to your goals.</p>
