@@ -137,7 +137,7 @@ async function loadPost() {
     /* ===== RENDER ===== */
     postContainer.innerHTML = `
       ${meta.image ? `
-        <div class="post-hero">
+        <div class="post-hero premium-hero">
           <img src="${meta.image}" alt="${meta.title}">
           <div class="post-hero-content">
             <span>${meta.category || ""}</span>
@@ -146,6 +146,10 @@ async function loadPost() {
               ${meta.date ? new Date(meta.date).toDateString() : ""} • 
               <span id="reading-time"></span> • 
               ${meta.author || "SB Financial"}
+              <div class="author-box">
+  <h4>Written by SB Financial</h4>
+  <p>AMFI Registered Mutual Fund Distributor helping investors build long-term wealth through SIPs and smart financial planning.</p>
+</div>
             </div>
           </div>
         </div>
