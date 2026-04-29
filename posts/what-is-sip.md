@@ -25,7 +25,7 @@ SIP stands for Systematic Investment Plan.
 <li>Monthly</li>
 <li>Quarterly</li></ul>
 
-<p>For example, if you invest ₹2,000 every month in a mutual fund, that is called a SIP.</p>
+<p>For example, if you invest ₹2,000 every month in a mutual fund, that is called a SIP. </p>
 
 <p>Instead of trying to time the market perfectly, SIP helps you invest consistently.</p>
 
