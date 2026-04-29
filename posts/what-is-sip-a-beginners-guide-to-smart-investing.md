@@ -1,10 +1,12 @@
 ---
 title: What is SIP? A Beginner’s Guide to Smart Investing
-date: 2026-04-01T22:54:00.000+05:30
+slug: what-is-sip
+date: 2026-04-29
 image: /assets/uploads/sip.jpg
 description: Learn what SIP is, how it works, its benefits, and why it is one of
   the smartest ways to build long-term wealth.
 category: SIP
+author: SB Financial
 ---
 If you’ve ever wanted to start investing but felt confused about where to begin, SIP might be one of the easiest and smartest ways to start.
 
