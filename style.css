@@ -1618,3 +1618,30 @@ section {
   margin-bottom: 2rem;
   object-fit: contain; /* 👈 prevents cropping */
 }
+
+/* ===== FORCE CORRECT ORDER ===== */
+
+#post-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-title {
+  order: 1;
+}
+
+.post-meta {
+  order: 2;
+}
+
+.post-image {
+  order: 3;
+}
+
+.toc-box {
+  order: 4;
+}
+
+.blog-post-body {
+  order: 5;
+}
