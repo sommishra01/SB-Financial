@@ -193,7 +193,7 @@ function generateTOC() {
 
   if (!content || !toc) return;
 
-  const headings = content.querySelectorAll("h2, h3");
+  const headings = content.querySelectorAll("h2");
 
   if (!headings.length) {
     toc.style.display = "none";
