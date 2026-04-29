@@ -1565,3 +1565,28 @@ section {
   border-radius: 20px;
   font-size: 0.8rem;
 }
+
+.author-box {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-radius: 14px;
+  background: #f8fbfb;
+  border: 1px solid #e6eeee;
+}
+.blog-post-body a {
+  color: #305f72;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+
+.blog-post-body a:hover {
+  border-color: #305f72;
+}
+@media (min-width: 900px) {
+  .toc-box {
+    position: sticky;
+    top: 100px;
+  }
+}
+
