@@ -33,7 +33,7 @@ SIP stands for Systematic Investment Plan.
 
 When you start a SIP, a fixed amount gets invested automatically into the mutual fund of your choice on a selected date.
 
-<strong>Example:</strong>
+<strong>Example: </strong>
 
 Suppose you start a SIP of <b>₹3,000 per month.</b>
 
