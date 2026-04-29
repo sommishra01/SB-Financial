@@ -179,7 +179,7 @@ Know why you are investing.
 <li>Retirement</li>
 <li>Wealth creation</li></ul>
 
-A goal helps you choose the right investment duration and fund type.
+A goal helps you choose the right investment duration and fund type. Ask for right <a href="/mutul-fund-guidance">mutual fund guidance</a> of not sure about where to invest and what's right fund for you.
 
 <h3><li>Invest According to Your Risk Profile</li></h3>
 
@@ -241,5 +241,5 @@ It is the habit it creates:
 
 If you are new to investing and want a simple place to start, SIP can be one of the best first steps.
 
-To know which SIP will be best for you, get a <strong>FREE expert consultation now.</strong><br>
+To know which SIP will be best for you, get a <a href="/contact"><strong>FREE expert consultation now.</strong></a><br>
 
