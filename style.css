@@ -1609,3 +1609,12 @@ section {
   border-radius: 16px;
   margin-bottom: 2rem;
 }
+
+
+.post-image img {
+  width: 100%;
+  height: auto;        /* 👈 keeps full image */
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  object-fit: contain; /* 👈 prevents cropping */
+}
