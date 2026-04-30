@@ -1615,29 +1615,14 @@ section {
   object-fit: contain; /* 👈 prevents cropping */
 }
 
-/* ===== FORCE CORRECT ORDER ===== */
+/* ===== RESET ANY OLD HERO BEHAVIOR ===== */
 
-#post-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.post-title {
-  order: 1;
-}
-
+.post-image,
+.post-title,
 .post-meta {
-  order: 2;
+  position: static !important;
 }
 
-.post-image {
-  order: 3;
-}
-
-.toc-box {
-  order: 4;
-}
-
-.blog-post-body {
-  order: 5;
+.post-image img {
+  display: block;
 }
