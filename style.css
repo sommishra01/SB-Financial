@@ -1626,3 +1626,32 @@ section {
 .post-image img {
   display: block;
 }
+
+/* ===== HARD RESET BLOG ORDER ===== */
+
+#post-content > * {
+  display: block;
+  position: static !important;
+  float: none !important;
+}
+
+/* Ensure strict vertical flow */
+.post-title,
+.post-meta,
+.post-image,
+.toc-box,
+.blog-post-body,
+.author-box,
+.cta-box,
+.share-section {
+  width: 100%;
+}
+
+/* Extra safety */
+.post-image {
+  margin-top: 0;
+}
+
+.post-title {
+  margin-top: 0;
+}
