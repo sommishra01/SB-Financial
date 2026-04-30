@@ -134,47 +134,71 @@ async function loadPost() {
 
     document.title = `${meta.title || slug} - SB Financial`;
 
-    /* ===== RENDER ===== */
-    postContainer.innerHTML = `
-      <h1 class="post-title">${meta.title || slug}</h1>
+    postContainer.innerHTML = "";
 
-<div class="post-meta">
-  ${meta.date ? new Date(meta.date).toDateString() : ""} • 
-  <span id="reading-time"></span> • 
-  ${meta.author || "SB Financial"}
-</div>
+// 1. TITLE
+postContainer.innerHTML += `
+  <h1 class="post-title">${meta.title || slug}</h1>
+`;
 
-${meta.image ? `
-  <div class="post-image">
-    <img src="${meta.image}" alt="${meta.title}">
+// 2. META
+postContainer.innerHTML += `
+  <div class="post-meta">
+    ${meta.date ? new Date(meta.date).toDateString() : ""} • 
+    <span id="reading-time"></span> • 
+    ${meta.author || "SB Financial"}
   </div>
-` : ""}
+`;
 
-      <div id="toc" class="toc-box"></div>
+// 3. IMAGE
+if (meta.image) {
+  postContainer.innerHTML += `
+    <div class="post-image">
+      <img src="${meta.image}" alt="${meta.title}">
+    </div>
+  `;
+}
 
-      <div class="blog-post-body">
-        ${marked.parse(content)}
-      </div>
-      <div class="author-box">
-  <h4>Written by SB Financial</h4>
-  <p>AMFI Registered Mutual Fund Distributor helping investors build long-term wealth through SIPs and smart financial planning.</p>
-</div>
- <div class="cta-box">
-  <h3>Want help choosing the right SIP?</h3>
-  <p>Get a FREE expert consultation tailored to your goals.</p>
-  <a href="/contact" class="btn">Book Free Consultation</a>
-</div>
-      
- <div class="share-section">
-  <h3>Found this helpful? Share it 👇</h3>
+// 4. TOC
+postContainer.innerHTML += `
+  <div id="toc" class="toc-box"></div>
+`;
 
-      <div class="share-buttons">
-        <a href="https://wa.me/?text=${encodeURIComponent(window.location.href)}" target="_blank">WhatsApp</a>
-        <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}" target="_blank">Twitter</a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank">LinkedIn</a>
-      </div>
-      </div>
-    `;
+// 5. CONTENT
+postContainer.innerHTML += `
+  <div class="blog-post-body">
+    ${marked.parse(content)}
+  </div>
+`;
+
+// 6. AUTHOR
+postContainer.innerHTML += `
+  <div class="author-box">
+    <h4>Written by SB Financial</h4>
+    <p>AMFI Registered Mutual Fund Distributor helping investors build long-term wealth through SIPs and smart financial planning.</p>
+  </div>
+`;
+
+// 7. CTA
+postContainer.innerHTML += `
+  <div class="cta-box">
+    <h3>Want help choosing the right SIP?</h3>
+    <p>Get a FREE expert consultation tailored to your goals.</p>
+    <a href="/contact" class="btn">Book Free Consultation</a>
+  </div>
+`;
+
+// 8. SHARE
+postContainer.innerHTML += `
+  <div class="share-section">
+    <h3>Found this helpful? Share it 👇</h3>
+    <div class="share-buttons">
+      <a href="https://wa.me/?text=${encodeURIComponent(window.location.href)}" target="_blank">WhatsApp</a>
+      <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}" target="_blank">Twitter</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+`;
 
     /* ===== RUN FEATURES ===== */
     generateTOC();
