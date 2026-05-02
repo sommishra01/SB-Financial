@@ -89,4 +89,9 @@ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <lastmod>2026-04-24T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
   </url>
+    <url>
+  <loc>https://sbfinances.com/blog/mutual-funds-india-guide</loc>
+  <lastmod>2026-04-30T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+  </url>
 </urlset>
