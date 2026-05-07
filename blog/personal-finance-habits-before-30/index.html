@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Post - SB Financial</title>
+
+  <link rel="stylesheet" href="/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/53ad980c15.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="nav-container">
+    <a href="/" class="logo">SB Financial</a>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/calculators">Calculators</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Blog -->
+<section class="features" style="padding-top: 8rem;">
+  <div class="container" style="max-width: 900px;">
+    <div id="post-content">
+      <h1>Loading...</h1>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-grid">
+
+    <div class="footer-col">
+      <h3>SB Financial</h3>
+      <p>Helping you invest smarter through mutual funds, SIPs, and goal-based planning.</p>
+      <p class="arn">AMFI Registered Mutual Fund Distributor | ARN: 242968</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/calculators">Calculators</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: sbfinancial03@gmail.com</p>
+      <p>Phone: +91 90447 96693</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      © 2026 SB Financial |
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/terms">Terms & Conditions</a> |
+      <a href="/disclaimer">Disclaimer</a>
+    </p>
+
+    <p class="disclaimer-text">
+      Mutual fund investments are subject to market risks.
+    </p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+async function loadPost() {
+
+  // 🔥 THIS WILL BE AUTO REPLACED BY GITHUB ACTION
+  const slug = "personal-finance-habits-before-30";
+
+  const postContainer = document.getElementById("post-content");
+
+  try {
+    const res = await fetch(`/posts/${slug}.md`);
+    if (!res.ok) throw new Error("Blog file not found");
+
+    const mdText = await res.text();
+
+    /* ===== FRONTMATTER PARSE ===== */
+    let meta = {};
+    const match = mdText.match(/^---([\s\S]*?)---/);
+
+    if (match) {
+      const lines = match[1].trim().split("\n");
+
+      lines.forEach(line => {
+        const parts = line.split(":");
+        const key = parts.shift()?.trim();
+        const value = parts.join(":").trim();
+
+        if (key && value) {
+          meta[key] = value;
+        }
+      });
+    }
+
+    /* ===== REMOVE FRONTMATTER ===== */
+    const content = mdText.replace(/^---[\s\S]*?---/, "").trim();
+
+    document.title = `${meta.title || slug} - SB Financial`;
+
+    postContainer.innerHTML = `
+      ${meta.image ? `
+        <div class="post-hero">
+          <img src="${meta.image}" alt="${meta.title}">
+          <div class="post-hero-content">
+            <span>${meta.category || ""}</span>
+            <h1>${meta.title || slug}</h1>
+            <div class="post-meta">
+              ${meta.date ? new Date(meta.date).toDateString() : ""} • 
+              <span id="reading-time"></span> • 
+              ${meta.author || "SB Financial"}
+            </div>
+          </div>
+        </div>
+      ` : ""}
+
+      <div id="toc" class="toc-box"></div>
+
+      <div class="blog-post-body">
+        ${marked.parse(content)}
+      </div>
+
+      <div class="cta-box">
+        <h3>Want help choosing the right SIP?</h3>
+        <p>Get a FREE expert consultation tailored to your goals.</p>
+        <a href="/contact" class="btn">Book Free Consultation</a>
+      </div>
+    `;
+
+    generateTOC();
+    calculateReadingTime();
+
+  } catch (err) {
+    postContainer.innerHTML = `<h1>Error</h1><p>${err.message}</p>`;
+  }
+}
+
+/* ===== TOC ===== */
+function generateTOC() {
+  const content = document.querySelector(".blog-post-body");
+  const toc = document.getElementById("toc");
+
+  if (!content || !toc) return;
+
+  const headings = content.querySelectorAll("h2, h3");
+
+  if (!headings.length) {
+    toc.style.display = "none";
+    return;
+  }
+
+  let html = "<h3>Table of Contents</h3><ul>";
+
+  headings.forEach((h, i) => {
+    const id = "h-" + i;
+    h.id = id;
+    html += `<li><a href="#${id}">${h.innerText}</a></li>`;
+  });
+
+  html += "</ul>";
+  toc.innerHTML = html;
+}
+
+/* ===== READING TIME ===== */
+function calculateReadingTime() {
+  const content = document.querySelector(".blog-post-body");
+  const el = document.getElementById("reading-time");
+
+  if (!content || !el) return;
+
+  const words = content.innerText.split(/\s+/).length;
+  const time = Math.ceil(words / 200);
+
+  el.innerText = `${time} min read`;
+}
+
+/* ===== PROGRESS BAR ===== */
+window.addEventListener("scroll", () => {
+  const scroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scroll / height) * 100;
+
+  document.getElementById("progress-bar").style.width = progress + "%";
+});
+
+/* ===== INIT ===== */
+loadPost();
+</script>
+
+</body>
+</html>
