@@ -887,3 +887,73 @@ p {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* =========================================================
+   HERO TEXT VISIBILITY FIX
+========================================================= */
+
+.hero-content p,
+.hero-video .hero-content p,
+.hero-inner .hero-content p,
+.hero-about .hero-content p {
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  font-weight: 400;
+}
+
+/* Optional: improve hero heading visibility too */
+.hero-content h1,
+.hero-video .hero-content h1,
+.hero-inner .hero-content h1,
+.hero-about .hero-content h1 {
+  text-shadow: 0 4px 18px rgba(0,0,0,0.35);
+}
+
+/* Darker overlay for better readability on video/image */
+.hero-video .overlay {
+  background: rgba(0,0,0,0.58);
+}
+
+/* =========================================================
+   FOOTER TEXT VISIBILITY FIX
+========================================================= */
+
+.footer p,
+.footer li,
+.footer span,
+.footer .arn,
+.footer .disclaimer-text {
+  color: rgba(255,255,255,0.78);
+  line-height: 1.7;
+}
+
+/* SB Financial heading section */
+.footer-col h3,
+.footer-col h4 {
+  color: #ffffff;
+}
+
+/* Footer links */
+.footer-col a {
+  color: rgba(255,255,255,0.78);
+}
+
+.footer-col a:hover {
+  color: #ffffff;
+}
+
+/* =========================================================
+   MOBILE HERO READABILITY
+========================================================= */
+
+@media (max-width:768px){
+
+  .hero-content p,
+  .hero-video .hero-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.95);
+  }
+
+}
