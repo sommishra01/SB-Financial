@@ -9,8 +9,6 @@ description: Discover the top personal finance habits every Indian should build
 category: "Personal Finance "
 author: "Shashwat Bajpai "
 ---
-# 10 Personal Finance Habits Every Indian Should Build Before 30
-
 Your 20s are not just about careers, relationships, and self-discovery. They are also the most important years for building **financial stability**.
 
 Most Indians start earning without learning how money actually works. As a result, many people enter their 30s with little savings, growing expenses, and no proper investment strategy.
