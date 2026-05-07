@@ -645,3 +645,38 @@ How it works
     left: 125%;
   }
 }
+
+/* =========================================================
+   HOMEPAGE HERO TEXT VISIBILITY FIX
+========================================================= */
+
+.hero-main-content {
+  color: #ffffff;
+}
+
+.hero-main-content h1 {
+  color: #ffffff;
+  text-shadow: 0 5px 20px rgba(0,0,0,0.45);
+}
+
+.hero-main-content p {
+  color: rgba(255,255,255,0.94);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  font-weight: 400;
+}
+
+/* Darker overlay for readability */
+.hero-video .overlay {
+  background: rgba(0,0,0,0.62);
+}
+
+/* Mobile readability */
+@media (max-width:768px){
+
+  .hero-main-content p{
+    font-size:1rem;
+    line-height:1.7;
+    color:rgba(255,255,255,0.96);
+  }
+
+}
