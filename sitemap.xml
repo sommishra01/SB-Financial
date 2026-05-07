@@ -94,4 +94,9 @@ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <lastmod>2026-04-30T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
   </url>
+  <url>
+  <loc>https://sbfinances.com/blog/personal-finance-habits-before-30</loc>
+  <lastmod>2026-05-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+  </url>
 </urlset>
