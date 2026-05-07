@@ -6,8 +6,8 @@ image: /assets/uploads/file_00000000a98c7207b1a0bdb565148a53.png
 description: Discover the top personal finance habits every Indian should build
   before turning 30. Learn budgeting, investing, SIPs, savings, insurance, and
   wealth-building strategies.
-category: "Personal Finance "
-author: "Shashwat Bajpai "
+category: Personal Finance
+author: Shashwat Bajpai
 ---
 Your 20s are not just about careers, relationships, and self-discovery. They are also the most important years for building **financial stability**.
 
