@@ -112,22 +112,26 @@ async function loadPost() {
     const mdText = await res.text();
 
     /* ===== FRONTMATTER PARSE (ROBUST) ===== */
-    let meta = {};
-    const match = mdText.match(/^---([\s\S]*?)---/);
+let meta = {};
+const match = mdText.match(/^---([\s\S]*?)---/);
 
-    if (match) {
-      const lines = match[1].trim().split("\n");
+if (match) {
+  const lines = match[1].trim().split("\n");
 
-      lines.forEach(line => {
-        const parts = line.split(":");
-        const key = parts.shift()?.trim();
-        const value = parts.join(":").trim();
+  lines.forEach(line => {
+    const parts = line.split(":");
+    const key = parts.shift()?.trim();
 
-        if (key && value) {
-          meta[key] = value;
-        }
-      });
+    const value = parts
+      .join(":")
+      .trim()
+      .replace(/^["']|["']$/g, "");
+
+    if (key && value) {
+      meta[key] = value;
     }
+  });
+}t
 
     /* ===== REMOVE FRONTMATTER ===== */
     const content = mdText.replace(/^---[\s\S]*?---/, "").trim();
