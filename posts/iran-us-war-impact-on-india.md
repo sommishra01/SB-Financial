@@ -1,5 +1,5 @@
 ---
-title: "3Iran-US War Impact on India: Fuel Prices, Stock Market & Investment
+title: "Iran-US War Impact on India: Fuel Prices, Stock Market & Investment
   Risks Explained"
 slug: iran-us-war-impact-on-india
 date: 2026-05-14
