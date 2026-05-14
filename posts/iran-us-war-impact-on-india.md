@@ -31,7 +31,7 @@ If geopolitical tensions disrupt oil transportation:
 
 Higher oil prices affect almost every industry, including transportation, manufacturing, aviation, and food supply chains.
 
-For investors, this is why having a long-term financial strategy matters more during uncertain global events. Structured [Investment Planning](https://sbfinances.com/investment-planning/) helps investors stay aligned with financial goals instead of reacting emotionally to market headlines.
+For investors, this is why having a long-term financial strategy matters more during uncertain global events. Structured [Investment Planning](https://sbfinances.com/investment-planning) helps investors stay aligned with financial goals instead of reacting emotionally to market headlines.
 
 ---
 
@@ -76,7 +76,7 @@ Meanwhile, sectors linked to defense, energy, and gold may experience increased 
 
 However, long-term investing decisions should not be based solely on short-term news events. Investors should regularly assess whether their portfolios are diversified according to their financial goals and risk tolerance.
 
-A professional [Portfolio Review](https://sbfinances.com/portfolio-review/) can help identify unnecessary concentration risks during volatile market conditions.
+A professional [Portfolio Review](https://sbfinances.com/portfolio-review) can help identify unnecessary concentration risks during volatile market conditions.
 
 ---
 
@@ -93,7 +93,7 @@ Instead of trying to predict short-term market movements, investors can focus on
 - Diversified portfolios
 - Adequate emergency funds
 
-Understanding proper [SIP Planning](https://sbfinances.com/sip-planning/) can help investors avoid emotional investment decisions during uncertain economic periods.
+Understanding proper [SIP Planning](https://sbfinances.com/sip-planning) can help investors avoid emotional investment decisions during uncertain economic periods.
 
 ---
 
@@ -115,7 +115,7 @@ Indian investors now have multiple options beyond physical gold, including:
 
 Still, financial experts generally advise balanced asset allocation rather than overexposure to any single investment category.
 
-Investors seeking balanced diversification strategies can also explore educational resources available on the [SB Finances Blog](https://sbfinances.com/blog/).
+Investors seeking balanced diversification strategies can also explore educational resources available on the [SB Finances Blog](https://sbfinances.com/blog).
 
 ---
 
@@ -131,7 +131,7 @@ Some practical financial considerations include:
 - Continuing long-term investments
 - Diversifying across asset classes
 
-For investors seeking personalized investment support during volatile conditions, professional [Mutual Fund Guidance](https://sbfinances.com/mutual-fund-guidance/) may help simplify financial decision-making.
+For investors seeking personalized investment support during volatile conditions, professional [Mutual Fund Guidance](https://sbfinances.com/mutual-fund-guidance) may help simplify financial decision-making.
 
 ---
 
@@ -145,24 +145,24 @@ For long-term financial planning and investment guidance tailored to your goals,
 
 ---
 
-# Frequently Asked Questions (FAQs)
+## Frequently Asked Questions (FAQs)
 
-## 1. How will the Iran-US war affect India?
+### 1. How will the Iran-US war affect India?
 
 The Iran-US conflict can impact India through rising crude oil prices, higher inflation, expensive fuel, stock market volatility, and increased household and transportation expenses.
 
-## 2. Will petrol prices rise in India because of the Iran-US conflict?
+### 2. Will petrol prices rise in India because of the Iran-US conflict?
 
 Yes, disruptions in Middle East oil supply can increase global crude oil prices, which may directly raise petrol and diesel prices across India.
 
-## 3. Should investors stop SIPs during market volatility?
+### 3. Should investors stop SIPs during market volatility?
 
 Financial experts generally recommend continuing SIP investments during market corrections because disciplined long-term investing may help reduce the impact of short-term volatility.
 
-## 4. Why do gold prices increase during wars?
+### 4. Why do gold prices increase during wars?
 
 Gold is considered a safer asset during uncertainty. During geopolitical conflicts, investor demand for gold usually rises, which can potentially increase gold prices globally.
 
-## 5. How can Indian investors prepare for economic uncertainty?
+### 5. How can Indian investors prepare for economic uncertainty?
 
 Indian investors can prepare by maintaining emergency savings, diversifying investments, continuing disciplined SIPs, and focusing on long-term financial planning instead of panic decisions.
